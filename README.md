@@ -1,6 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using the basic template.
 
 ## What's in the basic template?
+
 - It includes node-sass, and a style.scss (and removes all .css files)
 - It doesn't use serviceWorker
 - It replaces the react favicon with a flower of life icon
@@ -71,3 +72,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+# Cafe App README file
