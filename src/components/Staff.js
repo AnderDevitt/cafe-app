@@ -1,10 +1,16 @@
-import React from 'react'
+// import React from 'react'
 
-function Staff() {
+// function Staff() {
+//   return (
+    
+//   )
+// }
+
+// export default Staff
+const Staff = () => {
   return (
-    <div>
-        <h1> The Staff Page</h1>
-    </div>
+    <>
+    </>
   )
 }
 

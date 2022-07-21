@@ -6,7 +6,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import Staff from './Staff'
+import StaffList from './StaffList'
 import Admin from './Admin'
 import Home from './Home'
 import Login from './Login'
@@ -23,7 +23,7 @@ const App = () => {
         </li>
 
           <Switch>
-            <Route path="/staff" element={<Staff />} />
+            <Route path="/staff_list" element={<StaffList />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin_panel" element={<AdminPanel />} />

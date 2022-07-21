@@ -1,7 +1,9 @@
 [
-    {"id": "1", "first_name": "John", "last_name": "Gray", "active": "true"},
-    {"id": "2", "first_name": "Alison", "last_name": "Brown", "active": "true"},
-    {"id": "3", "first_name": "Peter", "last_name": "Green", "active": "true"},
-    {"id": "4", "first_name": "Clair", "last_name": "White", "active": "true"},
-    {"id": "5", "first_name": "Greg", "last_name": "Absent", "active": "false"}
+    {"id": "1", "first_name": "Bob", "last_name": "Gray", "username": "admin", "active": "true", "admin": "true", "password": "admin123"},
+    {"id": "2", "first_name": "Staff", "last_name": "Login", "username": "staff", "active": "true", "admin": "false", "password": "cafe123"},
+    {"id": "3", "first_name": "Peter", "last_name": "Green", "username": "peter", "active": "true", "admin": "false", "password": ""},
+    {"id": "4", "first_name": "Clair", "last_name": "White", "username": "clair", "active": "true", "admin": "false", "password": ""},
+    {"id": "5", "first_name": "Greg", "last_name": "Absent", "username": "greg", "active": "false", "admin": "false", "password": ""},
+    {"id": "6", "first_name": "Sam", "last_name": "Yellow", "username": "sam", "active": "true", "admin": "false", "password": ""},
+    {"id": "7", "first_name": "Chris", "last_name": "Away", "username": "chris", "active": "true", "admin": "false", "password": ""}
 ]
