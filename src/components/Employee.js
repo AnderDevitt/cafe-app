@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 // import { Link } from "react-router-dom";
+import { EmployeeContainer } from './style/styling'
 
 
 const Employee = ({employee}) => {
@@ -31,7 +32,7 @@ const Employee = ({employee}) => {
         <>
             {/* Check that only active employees are on the list to check in for a shift */}
             { employee.active === "true" ?
-                <div>
+                <EmployeeContainer>
                     <h4>{employee.first_name} {employee.last_name}</h4>
                     <div>
                         <form onSubmit={handleSubmit}>
@@ -43,7 +44,7 @@ const Employee = ({employee}) => {
                             <input type="submit" value="Clock Out" />
                         </form>
                     </div>
-                </div>    
+                </EmployeeContainer>    
                 :
                 <>
                 {/* Inform the user if no active staff are found */}
