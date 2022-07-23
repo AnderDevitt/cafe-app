@@ -66,7 +66,8 @@ const App = () => {
 
         </Router>
       </StateContext.Provider>
-      <div className="footer">Footer</div>
+      {/* <div className="footer">Footer</div> */}
+      {/* <footer>Copyright 2022</footer> */}
     </div>
   )
 }

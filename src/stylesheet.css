@@ -6,12 +6,12 @@
 .page {
     width: 100vw;
     height: 100vh;
-    background-color: #ffb703;
+    background-color: white;
 }
 
 .header {
     width: 100vw;
-    background-color: white;
+    background-color: #ffb703;
     text-align: center;
     list-style-type: none;
     font-size: 2em;
@@ -19,7 +19,7 @@
 
 .footer {
     width: 100vw;
-    background-color: white;
+    background-color: #ffb703;
     position: fixed;
     left: 0;
     bottom: 0;
