@@ -16,6 +16,13 @@ export const reducer = (state, action) => {
                 employeeList: action.data
             }
         }
+        case "setCurrentUser": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                currentUser: action.data
+            } 
+        }
         // default in case none of the cases activate
         default: return state
     }
