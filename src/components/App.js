@@ -6,7 +6,6 @@ import {
   BrowserRouter as Router,
   Routes as Switch,
   Route,
-  Link,
 } from "react-router-dom";
 import Admin from './Admin'
 import Home from './Home'
@@ -16,6 +15,8 @@ import Report from './Report'
 import initialEmployeeList from '../data/employee-list.json'
 import Employees from './Employees'
 import Navbar from './Navbar'
+import Footer from './Footer';
+import Header from './Header';
 
 
 const App = () => {
@@ -44,14 +45,15 @@ const App = () => {
 
   return (
     <div className="page">
+      <Header />
       {/* Wrap all the components that will use global state values: employeeList in the state context provider */}
       <StateContext.Provider value={{store, dispatch}}>
         {/* Wrap the app's routing components */}
     
         <Router>
-          <li className="header">
+          {/* <li className="header">
             <Link className="home-link" to="/">Logo</Link>
-          </li>
+          </li> */}
           <Navbar />
           {/* The routes using switch alias */}
           <Switch>
@@ -66,6 +68,7 @@ const App = () => {
 
         </Router>
       </StateContext.Provider>
+      <Footer />
       {/* <div className="footer">Footer</div> */}
       {/* <footer>Copyright 2022</footer> */}
     </div>
