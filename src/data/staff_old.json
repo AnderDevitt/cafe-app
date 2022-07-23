@@ -1,0 +1,7 @@
+[
+    {"id": "1", "first_name": "John", "last_name": "Gray", "active": "true"},
+    {"id": "2", "first_name": "Alison", "last_name": "Brown", "active": "true"},
+    {"id": "3", "first_name": "Peter", "last_name": "Green", "active": "true"},
+    {"id": "4", "first_name": "Clair", "last_name": "White", "active": "true"},
+    {"id": "5", "first_name": "Greg", "last_name": "Absent", "active": "false"}
+]
