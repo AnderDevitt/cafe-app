@@ -12,9 +12,19 @@ import Home from './Home'
 import Login from './Login'
 import AdminPanel from './AdminPanel'
 import Report from './Report'
+import initialEmployeeList from '../data/employee-list.json'
 
 
 const App = () => {
+
+  // states
+  const initialState = {
+    employeeList: []
+  }
+
+  //useReducer to handle all states in the same object
+  const [store, dispatch]
+
   return (
     <div className="page">
       <Router>
