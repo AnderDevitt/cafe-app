@@ -25,7 +25,8 @@
     bottom: 0;
     color: black;
     text-align: center;
-    font-size: 2em;
+    font-size: 1em;
+    padding: 0.5em;
 }
 
 .home-link {
