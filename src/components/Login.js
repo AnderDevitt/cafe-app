@@ -18,32 +18,32 @@ function Login() {
     e.preventDefault()
     console.log("you pressed submit")
     console.log(formData) // code gets the user and password when button is clicked
-//     axios.post("https://URL.OF.API", formData)
-//     .then(response => {
-//       //get token from response
-//       const token  =  response.data.token;
+    //     axios.post("https://URL.OF.API", formData)
+    //     .then(response => {
+    //       //get token from response
+    //       const token  =  response.data.token;
 
-//       //set JWT token to local
-//       localStorage.setItem("token", token);
+    //       //set JWT token to local
+    //       localStorage.setItem("token", token);
 
-//       //set token to axios common header
-//       setAuthToken(token);
+    //       //set token to axios common header
+    //       setAuthToken(token);
 
-// //redirect user to home page
-//       window.location.href = 'whereever you want'
-//     })
-//     .catch(err => console.log(err));
+    // //redirect user to home page
+    //       window.location.href = 'whereever you want'
+    //     })
+    //     .catch(err => console.log(err));
 
-// dispatch calls setCurrentUser in the reducer with formData.user as the data
-dispatch({
-  type: "setCurrentUser",
-  data: formData.user
-})
-
-setFormData(initialFormData)
-navigate("/employees")
-
-}
+    // dispatch calls setCurrentUser in the reducer with formData.user as the data
+    dispatch({
+      type: "setCurrentUser",
+      data: formData.user
+    })
+    // clears the data from the form fields
+    setFormData(initialFormData)
+    // navigates to the employees page
+    navigate("/employees")
+  }
 
   const handleFormData = (e) => {
     setFormData({
