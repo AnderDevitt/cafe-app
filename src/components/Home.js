@@ -8,7 +8,7 @@ function Home() {
         <nav>
             <ul>
               <li>
-                <Link to="/staff">Staff</Link>
+                <Link to="/employees">Staff Page</Link>
               </li>
               <li>
                 <Link to="/login">Admin</Link>

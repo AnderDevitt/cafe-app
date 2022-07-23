@@ -51,6 +51,7 @@ const App = () => {
 
             <Switch>
               <Route path="/employees" element={<Employees />} />
+              
               <Route path="/admin" element={<Admin />} />
               <Route path="/login" element={<Login />} />
               <Route path="/admin_panel" element={<AdminPanel />} />
