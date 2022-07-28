@@ -13,6 +13,7 @@ import Login from './Login'
 import AdminPanel from './AdminPanel'
 import Report from './Report'
 import initialEmployeeList from '../data/employee-list.json'
+import initialShiftList from '../data/shift-list.json'
 import Employees from './Employees'
 import Navbar from './Navbar'
 import Footer from './Footer';
@@ -24,6 +25,7 @@ const App = () => {
   // initial values for states
   const initialState = {
     employeeList: [],
+    shiftList: [],
     currentUser: ""
   }
 
@@ -42,6 +44,17 @@ const App = () => {
     },
     []
   )
+  // populate shiftList with initial data when the app starts
+  useEffect (
+    () => {
+      dispatch({
+        type: "setShiftList",
+        data: initialShiftList
+      })
+    },
+    []
+  )
+
 
   return (
     <div className="page">

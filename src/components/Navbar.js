@@ -23,6 +23,7 @@ const Navbar = () => {
             <>
                 <Link to="/employees">Staff Shifts</Link>
                 {currentUser}
+                <Link to="/admin_panel">Admin Panel</Link>
                 <Link to="/home" onClick={logout}>Logout</Link>
             </>
             :
