@@ -17,6 +17,7 @@ import Employees from './Employees'
 import Navbar from './Navbar'
 import Footer from './Footer';
 import Header from './Header';
+import axios from 'axios';
 
 
 const App = () => {
@@ -35,10 +36,20 @@ const App = () => {
   // populate employeeList with initial data when the app starts
   useEffect (
     () => {
-      dispatch({
-        type: "setEmployeeList",
-        data: initialEmployeeList
-      })
+      // fetch("http://localhost:4000/shifts")
+      // // get the response as json
+      // .then(response => response.json())
+      // // get the data to render
+      // .then(data => console.log(data))
+      // axios.get("http://localhost:4000/shifts")
+      // .then(response => {
+      //   console.log(response.data)
+        dispatch({
+          type: "setEmployeeList",
+          data: initialEmployeeList
+          // data: response.data
+        })
+      // })
     },
     []
   )
