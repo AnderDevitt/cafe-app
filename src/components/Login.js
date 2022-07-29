@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobalState } from '../utils/stateContext'
+import { Button } from "@mui/material"
 
 function Login() {
   // we will dispatch to the reducer to send formData.user to the reducer
@@ -66,7 +67,8 @@ function Login() {
                 <label>Password:</label>
                 <input type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
               </div>
-              <input type="submit" value="Login" />
+              {/* <input type="submit" value="Login" /> */}
+              <Button type="submit" variant="contained">Login</Button>
             </form>
         <li>
              <Link to="/home">Back to Main Page</Link>
