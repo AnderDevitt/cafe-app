@@ -50,9 +50,7 @@ const Employee = ({employee}) => {
                 {/* Inform the user if no active staff are found */}
                 <p>No employees currently active</p>
                 </>
-            }
-            
-            
+            }  
         </>
     )
 }
