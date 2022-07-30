@@ -10,15 +10,18 @@ import {
 import Admin from './Admin'
 import Home from './Home'
 import Login from './Login'
-import AdminPanel from './AdminPanel'
+// import AdminPanel from './AdminPanel'
 import Report from './Report'
-import initialEmployeeList from '../data/employee-list.json'
+// import initialEmployeeList from '../data/employee-list.json'
 import initialShiftList from '../data/shift-list.json'
 import Employees from './Employees'
 import Navbar from './Navbar'
 import Footer from './Footer';
 import Header from './Header';
-import axios from 'axios';
+import NewRoleForm from './NewRoleForm';
+import NewEmployeeForm from './NewEmployeeForm';
+// import axios from 'axios';
+import { getEmployees } from '../services/employeeServices';
 
 
 const App = () => {
@@ -27,7 +30,8 @@ const App = () => {
   const initialState = {
     employeeList: [],
     shiftList: [],
-    currentUser: ""
+    loggedInUser: sessionStorage.getItem("username") || "",
+    clockedOnWorker: sessionStorage.getItem("username") || ""
   }
 
   //useReducer to handle all states in the same object
@@ -46,12 +50,16 @@ const App = () => {
       // axios.get("http://localhost:4000/shifts")
       // .then(response => {
       //   console.log(response.data)
-        dispatch({
-          type: "setEmployeeList",
-          data: initialEmployeeList
-          // data: response.data
+
+      // connect to the backend api and get the employees, then dispatch to the reducer to initialise the employeeList
+      getEmployees()
+        .then(employees => {
+          dispatch({
+            type: "setEmployeeList",
+            data: employees
+          })
         })
-      // })
+        .catch(e => {console.log(e)})
     },
     []
   )
@@ -85,7 +93,9 @@ const App = () => {
             <Route path="/home" element={<Home />} />  
             <Route path="/admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/admin_panel" element={<AdminPanel />} />
+            <Route path="/new_role" element={<NewRoleForm />} />
+            <Route path="/new_employee" element={<NewEmployeeForm />} />
+            {/* <Route path="/admin_panel" element={<AdminPanel />} /> */}
             <Route path="/reports" element={<Report />} />
             <Route path="/" element={<Home />} />
           </Switch>

@@ -5,8 +5,8 @@
 // the reducer must return data
 
 export const reducer = (state, action) => {
-    console.log(state)
-    console.log(action)
+    // console.log(state)
+    // console.log(action)
 
     switch(action.type) {
         case "setEmployeeList": {
@@ -16,13 +16,22 @@ export const reducer = (state, action) => {
                 employeeList: action.data
             }
         }
-        case "setCurrentUser": {
+        case "setLoggedInUser": {
             // takes the logged in user from the login form and sets this value to the currentUser state globally
             return {
                 ...state,
-                currentUser: action.data
+                loggedInUser: action.data
             } 
         }
+
+        case "setWorker": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                ClockedOnWorker: action.data
+            } 
+        }
+
         // default in case none of the cases activate
         case "setShiftList": {
             // input the initial values into shiftList
@@ -33,6 +42,14 @@ export const reducer = (state, action) => {
                 shiftList: action.data
             }
         }
+
+        // case "createNewRole": {
+        //     // takes the logged in user from the login form and sets this value to the currentUser state globally
+        //     return {
+        //         ...state,
+        //         newRole: action.data
+        //     } 
+        // }
         default: return state
     }
 }

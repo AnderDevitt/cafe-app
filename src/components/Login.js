@@ -1,15 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGlobalState } from '../utils/stateContext'
-import { Button } from "@mui/material"
+import { Button, InputLabel, TextField, Typography } from "@mui/material"
+import { signIn } from '../services/authServices';
 
 function Login() {
   // we will dispatch to the reducer to send formData.user to the reducer
   const {dispatch} = useGlobalState()
   const navigate = useNavigate()
   const initialFormData = {
-    user: "",
+    username: "",
     password: ""
   }
 
@@ -19,31 +20,27 @@ function Login() {
     e.preventDefault()
     console.log("you pressed submit")
     console.log(formData) // code gets the user and password when button is clicked
-    //     axios.post("https://URL.OF.API", formData)
-    //     .then(response => {
-    //       //get token from response
-    //       const token  =  response.data.token;
-
-    //       //set JWT token to local
-    //       localStorage.setItem("token", token);
-
-    //       //set token to axios common header
-    //       setAuthToken(token);
-
-    // //redirect user to home page
-    //       window.location.href = 'whereever you want'
-    //     })
-    //     .catch(err => console.log(err));
-
-    // dispatch calls setCurrentUser in the reducer with formData.user as the data
-    dispatch({
-      type: "setCurrentUser",
-      data: formData.user
+    
+    signIn(formData)
+    .then(user => {
+      sessionStorage.setItem("username", user.username)
+      // console.log(user)
+      // dispatch calls setCurrentUser in the reducer with formData.user as the data
+      dispatch({
+        type: "setLoggedInUser",
+        data: user.username
+      })
+      // clears the data from the form fields
+      setFormData(initialFormData)
+      if (user.username === "admin")
+      // navigates to the employees page for staff terminal
+      navigate("/admin")
+        else
+      // navigates to the admin page for manager's PC  
+      navigate("/employees")  
     })
-    // clears the data from the form fields
-    setFormData(initialFormData)
-    // navigates to the employees page
-    navigate("/employees")
+    .catch(e => {console.log(e)})
+    
   }
 
   const handleFormData = (e) => {
@@ -56,23 +53,39 @@ function Login() {
   
 
   return (
+    // <div>
+    //     <h1> Login Page</h1>
+    //         <form onSubmit={handleSubmit}>
+    //           <div>
+    //             <label>Username:</label>
+    //             <input type="text" name="user" id="user" value={formData.user} onChange={handleFormData}/>
+    //           </div>
+    //           <div>
+    //             <label>Password:</label>
+    //             <input type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
+    //           </div>
+    //           {/* <input type="submit" value="Login" /> */}
+    //           <Button type="submit" variant="contained">Login</Button>
+    //         </form>
+    //     <li>
+    //          <Link to="/home">Back to Main Page</Link>
+    //     </li>
+    // </div>
     <div>
-        <h1> Login Page</h1>
+        <Typography variant="h4">Login</Typography>
             <form onSubmit={handleSubmit}>
               <div>
-                <label>Username:</label>
-                <input type="text" name="user" id="user" value={formData.user} onChange={handleFormData}/>
+                <InputLabel>Username:</InputLabel>
+                <TextField type="text" name="username" id="username" value={formData.username} onChange={handleFormData}/>
               </div>
+              
               <div>
-                <label>Password:</label>
-                <input type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
+                <InputLabel>Password:</InputLabel>
+                <TextField type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
               </div>
-              {/* <input type="submit" value="Login" /> */}
+              
               <Button type="submit" variant="contained">Login</Button>
             </form>
-        <li>
-             <Link to="/home">Back to Main Page</Link>
-        </li>
     </div>
   )
 }
