@@ -1,8 +1,11 @@
-import React from 'react'
-import { Link } from "react-router-dom"
+import React, { useState } from 'react'
+// import { Link } from "react-router-dom"
 import { useGlobalState } from '../utils/stateContext'
 import { Button, Typography, Card, CardContent } from "@mui/material"
 import { createShift } from '../services/shiftServices';
+import Popup1 from './popups/Popup1';
+import EmployeeLogin from './EmployeeLogin'
+// import { getShifts } from '../services/shiftServices';
 
 
 function Employee({employee, shift}) {
@@ -11,6 +14,7 @@ function Employee({employee, shift}) {
   // we will dispatch to the reducer to send formData.user to the reducer
   //const {dispatch} = useGlobalState()
   
+  const [buttonPopup, setButtonPopup] = useState(false)
   
   const today = new Date()
 
@@ -31,6 +35,7 @@ function Employee({employee, shift}) {
         })
         console.log(currentShift)
       })
+      
     }
 
 
@@ -40,15 +45,21 @@ function Employee({employee, shift}) {
         <Card>
           <CardContent>
           <Typography variant="h5">{employee.first_name} {employee.last_name}</Typography>
-            <div>
+            {/* <div>
               <Button label="Log On" value="/employee_login" component={Link} to="/employee_login">Verify</Button>
-            </div>
-            <Button name="start" id={employee.start} value={employee.start} onClick={handelStartTime} >Start My Shift</Button>
-            {/* <Button name="start" value="/employee_login" component={Link} to="/employee_login" onClick={handelStartTime} >Start My Shift</Button> */}
+            </div> */}
+            {/* <Button name="start" id={employee.start} value={employee.start} onClick={handelStartTime} >Start My Shift</Button> */}
+            <Button onClick={() => setButtonPopup(true)}>Clock In</Button>
           </CardContent>
         </Card>
-        
-      }  
+      }
+      <br></br>
+      <br></br>
+      <Popup1 trigger={buttonPopup} setTrigger = {setButtonPopup}>
+        <p>Enter your credentials, click Start, then Close</p> 
+        <EmployeeLogin />
+        <Button name="start" id={employee.start} value={employee.start} onClick={handelStartTime} >Start My Shift</Button>
+      </Popup1>  
     </>
   )
 }

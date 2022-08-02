@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useGlobalState } from '../utils/stateContext'
 import { Button, InputLabel, TextField, Typography } from "@mui/material"
 import { employeeSignIn } from '../services/authServices';
@@ -11,7 +11,7 @@ function Login({employee}) {
   //const {dispatch} = useGlobalState()
   const { dispatch} = useGlobalState()
   //const { clockedOnWorker} = store
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const initialFormData = {
     username: "",
     password: ""
@@ -40,7 +40,7 @@ function Login({employee}) {
       })
       // clears the data from the form fields
       setFormData(initialFormData)
-      navigate("/shifts")
+      // navigate("/shifts")
       
     })
     .catch(e => {console.log(e)})
@@ -59,7 +59,7 @@ function Login({employee}) {
 
   return (
     <div>
-        <Typography variant="h4">Login</Typography>
+        <Typography variant="h6">Login</Typography>
             <form onSubmit={handleSubmit}>
               <div>
                 <InputLabel>Username:</InputLabel>
@@ -67,11 +67,11 @@ function Login({employee}) {
               </div>
               
               <div>
-                <InputLabel>Password:</InputLabel>
+                <InputLabel>PIN:</InputLabel>
                 <TextField type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
               </div>
               
-              <Button type="submit" variant="contained">Login</Button>
+              <Button type="submit" variant="contained">Verify</Button>
             </form>
     </div>
   )

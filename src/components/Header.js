@@ -3,7 +3,7 @@ import {Head} from "./style/styling"
 
 function Header() {
   return (
-    <Head>Logo</Head>
+    <Head>ALS Cafe</Head>
   )
 }
 

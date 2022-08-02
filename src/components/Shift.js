@@ -1,11 +1,15 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-import { Typography, Button } from "@mui/material"
+import React, { useState } from 'react'
+// import { Link } from "react-router-dom"
+import { Typography, Button, Card, CardContent } from "@mui/material"
 import { updateShift } from '../services/shiftServices';
+import Popup2 from './popups/Popup1';
+import EmployeeLogin from './EmployeeLogin'
 
 
 function Shift({shift}) {
   
+    const [buttonPopup, setButtonPopup] = useState(false)
+
     const handelFinishTime = () =>{
         const today = new Date()
         let data = {
@@ -20,20 +24,23 @@ function Shift({shift}) {
     return (
         <>
         {!(shift.clocked_out === true) &&
-            <div>
-                
-                <Typography variant="h5">{shift.id}</Typography>
-                <Typography variant="h5">{shift.date}</Typography>
-                <Typography variant="h5">{shift.first_name} {shift.last_name}</Typography>
-                <div>
-                        <Button label="Log On" value="/employee_login" component={Link} to="/employee_login">Login</Button>
-                </div>
+            <Card>
+            <CardContent>
+                <Typography variant="h6">{shift.first_name} {shift.last_name}</Typography>
+                <Typography variant="h7">{shift.date}</Typography>
                 <Typography variant="h5">Start Time: {shift.start}</Typography>
-                <Button name="finish" id={shift.finish} value={shift.finish} onClick={handelFinishTime} >Finish My Shift</Button>
-                    
-            </div>
+                {/* <Button name="finish" id={shift.finish} value={shift.finish} onClick={handelFinishTime} >Finish My Shift</Button> */}
+                <Button onClick={() => setButtonPopup(true)}>Open Popup</Button>    
+                </CardContent>
+          
+                </Card>
         }
-        
+        <br></br> 
+        <Popup2 trigger={buttonPopup} setTrigger = {setButtonPopup}>
+        <h3>My popup</h3> 
+        <EmployeeLogin />
+        <Button name="finish" id={shift.finish} value={shift.finish} onClick={handelFinishTime} >Finish My Shift</Button>
+      </Popup2>  
         </>
     )
 }

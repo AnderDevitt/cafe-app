@@ -43,3 +43,7 @@ export const Head = styled.div`
     list-style-type: none;
     font-size: 2em;
 `
+export const AppBar = styled.nav`
+    width: 100vw;
+    background-color: #ffb703;
+`
