@@ -37,7 +37,9 @@ const Navbar = () => {
             <Toolbar>
                 <Tabs value={false}>
                     
-                    { loggedInUser && <Tab label="Shifts Page" value="/employees" component={Link} to="/employees" />}
+                    { loggedInUser && <Tab label="Employees Page" value="/employees" component={Link} to="/employees" />}
+                    { loggedInUser && <Tab label="Shifts Page" value="/shifts" component={Link} to="/shifts" />}
+                    { loggedInUser && <Tab label="Cafe Page" value="/cafe_view" component={Link} to="/cafe_view" />}
                     { (loggedInUser === "admin") && <Tab label="Admin Panel" value="/admin" component={Link} to="/admin" />}
 
                     { !loggedInUser && <Tab label="Log On" value="/login" component={Link} to="/login" />}
