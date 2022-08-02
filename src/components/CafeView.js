@@ -1,15 +1,16 @@
 import Employee from "./Employee"
-//import Shift from "./Shift" 
+import Shift from "./Shift" 
 import { useGlobalState } from "../utils/stateContext"
-import { ActiveStaff } from "./style/styling" 
+import { ActiveStaff, CurrentShift } from "./style/styling" 
 import React, { useEffect, useState } from 'react';
+import { Typography } from "@mui/material"
 import Clock from 'react-clock';
 import 'react-clock/dist/Clock.css'
 
 
-const Employees = () => {
+const CafeView = () => {
     const {store} = useGlobalState()
-    const {employeeList} = store
+    const {employeeList, shiftList} = store
     const [value, setValue] = useState(new Date());
     
     useEffect(() => {
@@ -27,22 +28,20 @@ const Employees = () => {
                 <p>Current time:</p>
                 <Clock value={value} />
             </div>
-            <br></br>
-            <p>Click the verify button and enter your details. Then click Start My Shift to clock on. </p>
-            <br></br>
+            <Typography variant="h4">Cafe Staff</Typography>
             <ActiveStaff>
                 {employeeList.map(employee =>
                     <Employee key={employee.id} employee={employee} />    
                 )}
             </ActiveStaff>
+            <Typography variant="h4">Current Shifts</Typography>
+            <CurrentShift>
+            {shiftList.map(shift =>
+                <Shift key={shift.id} shift={shift} />
+            )}
+            </CurrentShift>
         </>
     )
 }
 
-export default Employees
-
-
-    // const current = new Date()
-    // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
-    // // let time = (`${current.getHours()}:${current.getMinutes()}`)
-    // let time = `${current.toLocaleTimeString()}`
+export default CafeView

@@ -7,7 +7,13 @@ export async function getShifts() {
 }
 
 export async function createShift(data) {
-    const response = await cafeAPI.post('/shifts', data)
+    const response = await cafeAPI.post('/shifts_new', data)
+    console.log(response.data)
+    return response.data
+}
+
+export async function updateShift(data) {
+    const response = await cafeAPI.post('/shifts_update', data)
     console.log(response.data)
     return response.data
 }

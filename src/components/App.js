@@ -12,16 +12,19 @@ import Home from './Home'
 import Login from './Login'
 // import AdminPanel from './AdminPanel'
 import Report from './Report'
-// import initialEmployeeList from '../data/employee-list.json'
-import initialShiftList from '../data/shift-list.json'
+
+import CafeView from './CafeView'
 import Employees from './Employees'
+import Shifts from './Shifts'
 import Navbar from './Navbar'
 import Footer from './Footer';
 import Header from './Header';
 import NewRoleForm from './NewRoleForm';
 import NewEmployeeForm from './NewEmployeeForm';
+import EmployeeLogin from './EmployeeLogin'
 // import axios from 'axios';
 import { getEmployees } from '../services/employeeServices';
+import { getShifts } from '../services/shiftServices';
 
 
 const App = () => {
@@ -31,26 +34,18 @@ const App = () => {
     employeeList: [],
     shiftList: [],
     loggedInUser: sessionStorage.getItem("username") || "",
-    clockedOnWorker: sessionStorage.getItem("username") || ""
+    clockedOnWorker: sessionStorage.getItem("username2") || "",
+    currentShift: sessionStorage.getItem("id") || null,
+    token: sessionStorage.getItem("token") || null
   }
 
   //useReducer to handle all states in the same object
   const [store, dispatch] = useReducer(reducer, initialState)
-  // current user of the system either admin or general-login account for staff
-  //const {currentUser} = store
+  
 
   // populate employeeList with initial data when the app starts
   useEffect (
     () => {
-      // fetch("http://localhost:4000/shifts")
-      // // get the response as json
-      // .then(response => response.json())
-      // // get the data to render
-      // .then(data => console.log(data))
-      // axios.get("http://localhost:4000/shifts")
-      // .then(response => {
-      //   console.log(response.data)
-
       // connect to the backend api and get the employees, then dispatch to the reducer to initialise the employeeList
       getEmployees()
         .then(employees => {
@@ -66,10 +61,13 @@ const App = () => {
   // populate shiftList with initial data when the app starts
   useEffect (
     () => {
-      dispatch({
-        type: "setShiftList",
-        data: initialShiftList
-      })
+      getShifts()
+        .then(shifts => {
+          dispatch({
+            type: "setShiftList",
+            data: shifts
+          })
+        })
     },
     []
   )
@@ -90,11 +88,14 @@ const App = () => {
           {/* The routes using switch alias */}
           <Switch>
             <Route path="/employees" element={<Employees />} />
+            <Route path="/shifts" element={<Shifts />} />
+            <Route path="/cafe_view" element={<CafeView />} />
             <Route path="/home" element={<Home />} />  
             <Route path="/admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/new_role" element={<NewRoleForm />} />
             <Route path="/new_employee" element={<NewEmployeeForm />} />
+            <Route path="/employee_login" element={<EmployeeLogin />} />
             {/* <Route path="/admin_panel" element={<AdminPanel />} /> */}
             <Route path="/reports" element={<Report />} />
             <Route path="/" element={<Home />} />

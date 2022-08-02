@@ -3,11 +3,14 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from '../utils/stateContext'
 import { Button, InputLabel, TextField, Typography } from "@mui/material"
-import { signIn } from '../services/authServices';
+import { employeeSignIn } from '../services/authServices';
 
-function Login() {
+
+function Login({employee}) {
   // we will dispatch to the reducer to send formData.user to the reducer
-  const {dispatch} = useGlobalState()
+  //const {dispatch} = useGlobalState()
+  const { dispatch} = useGlobalState()
+  //const { clockedOnWorker} = store
   const navigate = useNavigate()
   const initialFormData = {
     username: "",
@@ -21,27 +24,29 @@ function Login() {
     console.log("you pressed submit")
     console.log(formData) // code gets the user and password when button is clicked
     
-    signIn(formData)
-    .then(user => {
-      sessionStorage.setItem("username", user.username)
-      // console.log(user)
+    employeeSignIn(formData)
+    .then(({username, jwt}) => {
+      sessionStorage.setItem(`${username}`, username)
+      sessionStorage.setItem("token", jwt)
+      
       // dispatch calls setCurrentUser in the reducer with formData.user as the data
       dispatch({
-        type: "setLoggedInUser",
-        data: user.username
+        type: "setWorker",
+        data: username
+      })
+      dispatch({
+        type: "setToken",
+        data: jwt
       })
       // clears the data from the form fields
       setFormData(initialFormData)
-      if (user.username === "admin")
-      // navigates to the employees page for staff terminal
-      navigate("/admin")
-        else
-      // navigates to the admin page for manager's PC  
-      navigate("/employees")  
+      navigate("/shifts")
+      
     })
     .catch(e => {console.log(e)})
     
   }
+
 
   const handleFormData = (e) => {
     setFormData({

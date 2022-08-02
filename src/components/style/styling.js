@@ -24,6 +24,18 @@ export const ActiveStaff = styled.div`
     width: 60%;
 
 `
+
+export const CurrentShift = styled.div`
+    text-align: center;
+    align-items: center;
+    width: 60%;
+`
+export const Card = styled.div`
+    text-align: center;
+    align-items: center;
+    width: 60%;
+    border: 1px solid black;
+`
 export const Head = styled.div`
     width: 100vw;
     background-color: #ffb703;

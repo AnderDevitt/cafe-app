@@ -11,3 +11,9 @@ export async function createEmployee(data) {
     console.log(response.data)
     return response.data
 }
+
+export async function verifyEmployee(data) {
+    const response = await cafeAPI.post('/staff_login', data)
+    console.log(response.data)
+    return response.data
+}

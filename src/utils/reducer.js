@@ -23,13 +23,42 @@ export const reducer = (state, action) => {
                 loggedInUser: action.data
             } 
         }
+        case "setToken": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                token: action.data
+            } 
+        }
+        case "setCurrentShift": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                currentShift: action.data
+            } 
+        }
 
         case "setWorker": {
             // takes the logged in user from the login form and sets this value to the currentUser state globally
             return {
                 ...state,
-                ClockedOnWorker: action.data
+                clockedOnWorker: action.data
             } 
+        }
+
+        case "setTime": {
+            return {
+                ...state,
+                time: action.data
+            }
+        }
+
+        case "setValue": {
+            return {
+                ...state,
+                value: action.data
+            }
+                
         }
 
         // default in case none of the cases activate
