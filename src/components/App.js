@@ -85,6 +85,7 @@ const App = () => {
             <Link className="home-link" to="/">Logo</Link>
           </li> */}
           <Navbar />
+          
           {/* The routes using switch alias */}
           <Switch>
             <Route path="/employees" element={<Employees />} />

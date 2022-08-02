@@ -1,7 +1,8 @@
 // import { Link, useNavigate } from "react-router-dom"
 import { Link, useNavigate } from "react-router-dom"
 import { useGlobalState } from "../utils/stateContext"
-import { AppBar, Toolbar, Tab, Tabs, Typography } from "@mui/material"
+import { AppBar, Toolbar, Tab, Tabs } from "@mui/material"
+import "./style/styling" 
 
 const Navbar = () => {
     const {store, dispatch} = useGlobalState()
@@ -33,7 +34,7 @@ const Navbar = () => {
 
     return (
         <AppBar position="sticky">
-            <Typography variant="h3">ALS Cafe</Typography>
+            {/* <Typography variant="h3">ALS Cafe</Typography> */}
             <Toolbar>
                 <Tabs value={false}>
                     

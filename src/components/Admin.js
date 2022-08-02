@@ -43,6 +43,9 @@ function Admin() {
             <Typography>
               Generate reports
             </Typography>
+            <Link href="/reports" underline="hover">
+              {'Generate Report'}
+            </Link>
           </AccordionDetails>
         </Accordion>
 

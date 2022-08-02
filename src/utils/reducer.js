@@ -64,8 +64,6 @@ export const reducer = (state, action) => {
         // default in case none of the cases activate
         case "setShiftList": {
             // input the initial values into shiftList
-            console.log("setshift arrived")
-            console.log(action.data)
             return {
                 ...state,
                 shiftList: action.data

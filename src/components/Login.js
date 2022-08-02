@@ -37,7 +37,7 @@ function Login() {
       navigate("/admin")
         else
       // navigates to the admin page for manager's PC  
-      navigate("/employees")  
+      navigate("/shifts")  
     })
     .catch(e => {console.log(e)})
     
