@@ -33,7 +33,7 @@ function Report() {
           shift={shift}
           date={value}
           employee={employeeList.find(
-            (employee) => employee.first_name === shift.first_name
+            (employee) => employee.id === shift.employee_id
           )}
         />
       ))}

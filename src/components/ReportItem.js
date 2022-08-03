@@ -24,7 +24,6 @@ const ReportItem = ({ shift, employee, date }) => {
               <span>Finish:</span>
               <Moment format="hh:mm:ss">{shift.finish}</Moment>
             </div>
-            <p>Hours: {shift.hours}</p>
           </div>
           </CardContent>
         </Card>
