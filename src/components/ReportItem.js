@@ -3,10 +3,11 @@ import Moment from "react-moment";
 import "../stylesheet.css";
 
 const ReportItem = ({ shift, employee, date }) => {
+  const moment = require('moment');
   return (
     <>
       {/* Check that only active employees are on the list to check in for a shift */}
-      {date.toLocaleDateString(['ban', 'id']) === shift.date ? (
+      {moment(date).format('YYYY-MM-DD') === shift.date && (
         <div className="report-item">
           <h3>Date: {shift.date}</h3>
           <div>
@@ -24,10 +25,6 @@ const ReportItem = ({ shift, employee, date }) => {
             <p>Hours: {shift.hours}</p>
           </div>
         </div>
-      ) : (
-        <>
-          <p>No Shifts on this Date</p>
-        </>
       )}
     </>
   );
