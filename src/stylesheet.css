@@ -49,15 +49,17 @@
 
 .report-list {
     display: flex;
+    text-align: center;
+    align-items: center;
+    width: 60vw;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
 }
 .report-item {
-    width: 30vw;
+    width: 60vw;
     height: 20vh;
-    background-color: grey;
     border-radius: 10px;
     border-color: black;
     margin: 5px;
