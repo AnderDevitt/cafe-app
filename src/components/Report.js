@@ -19,12 +19,14 @@ function Report() {
   return (
     <div className="report-list">
       <Calendar onChange={onChange} value={value} />
-      <CSVLink data={shifts}>
-        Download me
-      </CSVLink>
-      {shifts.length == 0 && (
+      {shifts.length == 0 ? (
         <h3> No shifts on this date </h3>
+      ) : (
+        <CSVLink data={shifts}>
+        Download me
+        </CSVLink>
       )}
+
       {shiftList.map((shift) => (
         <ReportItem
           key={shift.id}
