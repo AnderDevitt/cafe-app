@@ -11,22 +11,27 @@ function Report() {
   const { store } = useGlobalState();
   const { employeeList } = store;
   const { shiftList } = store;
+  const moment = require('moment');
   const [value, onChange] = useState(new Date());
-  let shifts = shiftList.filter((shift) => value.toLocaleDateString(['ban', 'id']) === shift.date) || "no shifts"
-  console.log(shifts)
+  let shifts = shiftList.filter((shift) => moment(value).format('YYYY-MM-DD') === shift.date)
   return (
     <div className="report-list">
       <Calendar onChange={onChange} value={value} />
-      <CSVLink data={shifts}>
+      {shifts.length === 0 ? (
+        <h3> No shifts on this date </h3>
+      ) : (
+        <CSVLink data={shifts}>
         Download me
-      </CSVLink>
+        </CSVLink>
+      )}
+
       {shiftList.map((shift) => (
         <ReportItem
           key={shift.id}
           shift={shift}
           date={value}
           employee={employeeList.find(
-            (employee) => employee.id === shift.user_id
+            (employee) => employee.id === shift.employee_id
           )}
         />
       ))}
