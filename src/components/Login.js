@@ -23,21 +23,30 @@ function Login() {
     
     signIn(formData)
     .then(user => {
+
+      if (user["Error"]) {
+        console.log("Sign-in had an error! It is: " + user["Error"])
+      }
+
       sessionStorage.setItem("username", user.username)
-      // console.log(user)
-      // dispatch calls setCurrentUser in the reducer with formData.user as the data
+      // dispatch calls setLoggedInUser in the reducer with formData.user as the data
       dispatch({
         type: "setLoggedInUser",
         data: user.username
       })
+      
       // clears the data from the form fields
       setFormData(initialFormData)
-      if (user.username === "admin")
-      // navigates to the employees page for staff terminal
-      navigate("/admin")
-        else
-      // navigates to the admin page for manager's PC  
-      navigate("/shifts")  
+      if (user.username === "admin") {
+        navigate("/admin")
+      }
+      else if (user.username === "cafe") {
+        // navigate("/shifts")
+        navigate("/cafe") 
+      }
+      else {
+        navigate("/login")
+      }  
     })
     .catch(e => {console.log(e)})
     

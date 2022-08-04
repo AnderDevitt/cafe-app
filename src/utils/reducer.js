@@ -60,8 +60,6 @@ export const reducer = (state, action) => {
             }
                 
         }
-
-        // default in case none of the cases activate
         case "setShiftList": {
             // input the initial values into shiftList
             return {
@@ -69,14 +67,26 @@ export const reducer = (state, action) => {
                 shiftList: action.data
             }
         }
-
-        // case "createNewRole": {
-        //     // takes the logged in user from the login form and sets this value to the currentUser state globally
-        //     return {
-        //         ...state,
-        //         newRole: action.data
-        //     } 
-        // }
+        
+        case "setCurrentShiftList": {
+            // input the initial values into shiftList
+            return {
+                ...state,
+                currentShiftList: action.data
+            }
+        }
+        // default in case none of the cases activate
         default: return state
     }
 }
+
+// initial values for states
+export const initialState = {
+    employeeList: [],
+    shiftList: [],
+    // currentShiftList: [],
+    loggedInUser: sessionStorage.getItem("username") || "",
+    clockedOnWorker: sessionStorage.getItem("username2") || "",
+    // currentShift: sessionStorage.getItem("id") || null,
+    token: sessionStorage.getItem("token") || null
+  }

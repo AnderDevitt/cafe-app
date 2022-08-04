@@ -6,7 +6,7 @@ import { Button, InputLabel, TextField, Typography } from "@mui/material"
 import { employeeSignIn } from '../services/authServices';
 
 
-function Login({employee}) {
+function EmployeeLogin({employee}) {
   // we will dispatch to the reducer to send formData.user to the reducer
   //const {dispatch} = useGlobalState()
   const { dispatch} = useGlobalState()
@@ -28,7 +28,7 @@ function Login({employee}) {
     .then(({username, jwt}) => {
       sessionStorage.setItem(`${username}`, username)
       sessionStorage.setItem("token", jwt)
-      
+      console.log(sessionStorage.all)
       // dispatch calls setCurrentUser in the reducer with formData.user as the data
       dispatch({
         type: "setWorker",
@@ -77,4 +77,4 @@ function Login({employee}) {
   )
 }
 
-export default Login
+export default EmployeeLogin
