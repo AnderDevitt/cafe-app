@@ -23,11 +23,6 @@ const Employees = () => {
 
     return (
         <>
-            {/* <br></br>
-            <br></br>
-            <div>
-                <Clock value={value} />
-            </div> */}
             <br></br>
             <br></br>
             <ActiveStaff>
@@ -40,9 +35,3 @@ const Employees = () => {
 }
 
 export default Employees
-
-
-    // const current = new Date()
-    // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
-    // // let time = (`${current.getHours()}:${current.getMinutes()}`)
-    // let time = `${current.toLocaleTimeString()}`

@@ -41,7 +41,8 @@ function Login() {
         navigate("/admin")
       }
       else if (user.username === "cafe") {
-        navigate("/shifts") 
+        // navigate("/shifts")
+        navigate("/cafe") 
       }
       else {
         navigate("/login")

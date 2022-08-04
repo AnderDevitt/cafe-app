@@ -11,7 +11,7 @@ import Admin from './Admin'
 import Login from './Login'
 // import Report from './Report'
 import Employees from './Employees'
-import Shifts from './Shifts'
+// import Shifts from './Shifts'
 import Navbar from './Navbar'
 import Footer from './Footer';
 import Header from './Header';
@@ -21,22 +21,11 @@ import EmployeeLogin from './EmployeeLogin'
 import CafeView from './CafeView.js'
 // import axios from 'axios';
 import { getEmployees } from '../services/employeeServices';
-import { getShifts } from '../services/shiftServices';
+// import { getShifts } from '../services/shiftServices';
 import { initialState } from '../utils/reducer'
 
 
 const App = () => {
-
-  // initial values for states
-  // const initialState = {
-  //   employeeList: [],
-  //   shiftList: [],
-  //   // currentShiftList: [],
-  //   loggedInUser: sessionStorage.getItem("username") || "",
-  //   clockedOnWorker: sessionStorage.getItem("username2") || "",
-  //   // currentShift: sessionStorage.getItem("id") || null,
-  //   token: sessionStorage.getItem("token") || null
-  // }
 
   //useReducer to handle all states in the same object
   const [store, dispatch] = useReducer(reducer, initialState)
@@ -65,14 +54,14 @@ const App = () => {
     []
   )
 
-  getShifts()
-      .then(shifts => {
-        dispatch({
-          type: "setEmployeeList",
-          data: shifts
-        })
-      })
-      .catch(e => {console.log(e)})
+  // getShifts()
+  //     .then(shifts => {
+  //       dispatch({
+  //         type: "setEmployeeList",
+  //         data: shifts
+  //       })
+  //     })
+  //     .catch(e => {console.log(e)})
 
 
   return (
@@ -98,8 +87,9 @@ const App = () => {
             {/* Routes related to Employee Operations  */}
             <Route path="/employee_login" element={<EmployeeLogin />} />
             <Route path="/employees" element={<Employees />} />
-            <Route path="/shifts" element={<Shifts />} />
+            {/* <Route path="/shifts" element={<Shifts />} /> */}
             <Route path="/cafe" element={<CafeView />} />
+            {/* <Route path="/employee" element={<Employee_original />} /> */}
     
           </Switch>
         </Router>

@@ -9,7 +9,7 @@ import EmployeeLogin from './EmployeeLogin'
 function Shift({shift}) {
   
     const [buttonPopup, setButtonPopup] = useState(false)
-
+    console.log(shift)
     const handelFinishTime = () =>{
         const today = new Date()
         let data = {

@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const EmployeeContainer = styled.div`
-    // width: 60%;
-    background: lightgrey;
+    width: 60%;
+    // background: lightgrey;
     mergin: 5px;
-    border: solid black 1px;
+    // border: solid black 1px;
     padding: 2px;
+    
 `
 export const Foot = styled.div`
     width: 100vw;
@@ -21,7 +22,7 @@ export const Foot = styled.div`
 export const ActiveStaff = styled.div`
     text-align: center;
     align-items: center;
-    width: 60%;
+    width: 100%;
 
 `
 
