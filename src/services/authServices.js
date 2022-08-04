@@ -7,9 +7,14 @@ export async function signUp(data) {
 }
 
 export async function signIn(data) {
-    const response = await cafeAPI.post('/auth/signin', data)
+    if (data.username === "admin"){
+        const response = await cafeAPI.post('/auth/signin', data) 
+        return response.data
+    } else {
+        const response = await cafeAPI.post('/auth/staff_login', data)
+        return response.data
+    }
     //console.log(response.data)
-    return response.data
 }
 
 export async function employeeSignIn(data) {
