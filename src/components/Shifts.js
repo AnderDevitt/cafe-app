@@ -1,46 +1,61 @@
 
 import Shift from "./Shift" 
 import { useGlobalState } from "../utils/stateContext"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { CurrentShift} from "./style/styling" 
-import Clock from 'react-clock';
-import 'react-clock/dist/Clock.css'
 // import { getShifts } from '../services/shiftServices';
+// import { getCurrentShifts } from '../services/shiftServices';
 
 
 const Shifts = () => {
-    const {store} = useGlobalState()
+  // const {store, dispatch} = useGlobalState()  
+  const {store} = useGlobalState()
     const {shiftList} = store
-    const [value, setValue] = useState(new Date());
-    
-    useEffect(() => {
-        const interval = setInterval(() => setValue(new Date()), 1000);
-    
-        return () => {
-          clearInterval(interval);
-        };
-    }, []);
-    
-    //   useEffect (
-    //     () => {
-    //       getShifts()
-    //         .then(shifts => {
-    //           dispatch({
-    //             type: "setShiftList",
-    //             data: shifts
-    //           })
-    //         })
-    //     },
-    //     []
-    //   )
+    // const {currentShiftList} = store    
+    console.log("Shift List in Shifts.js: " + shiftList)
+
+      // useEffect (
+      //   () => {
+      // getShifts()
+      // .then(shifts => {
+      //   dispatch({
+      //     type: "setEmployeeList",
+      //     data: shifts
+      //   })
+      // })
+      // .catch(e => {console.log(e)})
+      //       .then(shifts => {
+      //         dispatch({
+      //           type: "setShiftList",
+      //           data: shifts
+      //         })
+      //       })
+      //   },
+      //   [{shiftList}]
+      // )
+      // getShifts()
+        // .then(shifts => {
+        //   dispatch({
+        //     type: "setShiftList",
+        //     data: shifts
+        //   })
+        // })
+      // useEffect (
+      //   () => {
+      //     getCurrentShifts()
+      //       .then(shifts => {
+      //         dispatch({
+      //           type: "setcurrentShiftList",
+      //           data: shifts
+      //         })
+      //       })
+      //       console.log(currentShiftList)    
+      //   },
+      //   []
+      // )
 
     return (
         <>   
-            <br></br>
-            <br></br>
-            <div>
-                <Clock value={value} />
-            </div>
             <br></br>
             
             <CurrentShift>

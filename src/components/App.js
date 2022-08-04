@@ -8,12 +8,8 @@ import {
   Route,
 } from "react-router-dom";
 import Admin from './Admin'
-import Home from './Home'
 import Login from './Login'
-// import AdminPanel from './AdminPanel'
-import Report from './Report'
-
-import CafeView from './CafeView'
+// import Report from './Report'
 import Employees from './Employees'
 import Shifts from './Shifts'
 import Navbar from './Navbar'
@@ -22,27 +18,30 @@ import Header from './Header';
 import NewRoleForm from './NewRoleForm';
 import NewEmployeeForm from './NewEmployeeForm';
 import EmployeeLogin from './EmployeeLogin'
+import CafeView from './CafeView.js'
 // import axios from 'axios';
 import { getEmployees } from '../services/employeeServices';
 import { getShifts } from '../services/shiftServices';
+import { initialState } from '../utils/reducer'
 
 
 const App = () => {
 
   // initial values for states
-  const initialState = {
-    employeeList: [],
-    shiftList: [],
-    loggedInUser: sessionStorage.getItem("username") || "",
-    clockedOnWorker: sessionStorage.getItem("username2") || "",
-    currentShift: sessionStorage.getItem("id") || null,
-    token: sessionStorage.getItem("token") || null
-  }
+  // const initialState = {
+  //   employeeList: [],
+  //   shiftList: [],
+  //   // currentShiftList: [],
+  //   loggedInUser: sessionStorage.getItem("username") || "",
+  //   clockedOnWorker: sessionStorage.getItem("username2") || "",
+  //   // currentShift: sessionStorage.getItem("id") || null,
+  //   token: sessionStorage.getItem("token") || null
+  // }
 
   //useReducer to handle all states in the same object
   const [store, dispatch] = useReducer(reducer, initialState)
-  
-
+  // const {shiftList} = store
+  // const currentShifts = shiftList
   // populate employeeList with initial data when the app starts
   useEffect (
     () => {
@@ -61,16 +60,19 @@ const App = () => {
   // populate shiftList with initial data when the app starts
   useEffect (
     () => {
-      getShifts()
-        .then(shifts => {
-          dispatch({
-            type: "setShiftList",
-            data: shifts
-          })
-        })
+      console.log("A change to shiftList has been detected")
     },
     []
   )
+
+  getShifts()
+      .then(shifts => {
+        dispatch({
+          type: "setEmployeeList",
+          data: shifts
+        })
+      })
+      .catch(e => {console.log(e)})
 
 
   return (
@@ -79,29 +81,27 @@ const App = () => {
       {/* Wrap all the components that will use global state values: employeeList in the state context provider */}
       <StateContext.Provider value={{store, dispatch}}>
         {/* Wrap the app's routing components */}
-    
         <Router>
-          {/* <li className="header">
-            <Link className="home-link" to="/">Logo</Link>
-          </li> */}
           <Navbar />
-          
           {/* The routes using switch alias */}
           <Switch>
-            <Route path="/employees" element={<Employees />} />
-            <Route path="/shifts" element={<Shifts />} />
-            <Route path="/cafe_view" element={<CafeView />} />
-            <Route path="/home" element={<Home />} />  
-            <Route path="/admin" element={<Admin />} />
+            {/* System login routes */}
+            <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
+
+            {/* Routes related to Admin Operations */}
+            <Route path="/admin" element={<Admin />} />
             <Route path="/new_role" element={<NewRoleForm />} />
             <Route path="/new_employee" element={<NewEmployeeForm />} />
-            <Route path="/employee_login" element={<EmployeeLogin />} />
-            {/* <Route path="/admin_panel" element={<AdminPanel />} /> */}
-            <Route path="/reports" element={<Report />} />
-            <Route path="/" element={<Home />} />
-          </Switch>
+            {/* <Route path="/reports" element={<Report />} /> */}
 
+            {/* Routes related to Employee Operations  */}
+            <Route path="/employee_login" element={<EmployeeLogin />} />
+            <Route path="/employees" element={<Employees />} />
+            <Route path="/shifts" element={<Shifts />} />
+            <Route path="/cafe" element={<CafeView />} />
+    
+          </Switch>
         </Router>
       </StateContext.Provider>
       <Footer />
