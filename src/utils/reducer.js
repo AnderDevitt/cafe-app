@@ -5,8 +5,8 @@
 // the reducer must return data
 
 export const reducer = (state, action) => {
-    console.log(state)
-    console.log(action)
+    // console.log(state)
+    // console.log(action)
 
     switch(action.type) {
         case "setEmployeeList": {
@@ -16,14 +16,77 @@ export const reducer = (state, action) => {
                 employeeList: action.data
             }
         }
-        case "setCurrentUser": {
+        case "setLoggedInUser": {
             // takes the logged in user from the login form and sets this value to the currentUser state globally
             return {
                 ...state,
-                currentUser: action.data
+                loggedInUser: action.data
             } 
+        }
+        case "setToken": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                token: action.data
+            } 
+        }
+        case "setCurrentShift": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                currentShift: action.data
+            } 
+        }
+
+        case "setWorker": {
+            // takes the logged in user from the login form and sets this value to the currentUser state globally
+            return {
+                ...state,
+                clockedOnWorker: action.data
+            } 
+        }
+
+        case "setTime": {
+            return {
+                ...state,
+                time: action.data
+            }
+        }
+
+        case "setValue": {
+            return {
+                ...state,
+                value: action.data
+            }
+                
+        }
+        case "setShiftList": {
+            // input the initial values into shiftList
+            return {
+                ...state,
+                shiftList: action.data
+            }
+        }
+        
+        case "setCurrentShiftList": {
+            // input the initial values into shiftList
+            return {
+                ...state,
+                currentShiftList: action.data
+            }
         }
         // default in case none of the cases activate
         default: return state
     }
 }
+
+// initial values for states
+export const initialState = {
+    employeeList: [],
+    shiftList: [],
+    // currentShiftList: [],
+    loggedInUser: sessionStorage.getItem("username") || "",
+    clockedOnWorker: sessionStorage.getItem("username2") || "",
+    // currentShift: sessionStorage.getItem("id") || null,
+    token: sessionStorage.getItem("token") || null
+  }

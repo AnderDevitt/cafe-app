@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useGlobalState } from '../utils/stateContext'
 import { Button, InputLabel, TextField, Typography } from "@mui/material"
-import { signIn } from '../services/authServices';
+import { employeeSignIn } from '../services/authServices';
 
-function Login() {
+
+function EmployeeLogin({employee}) {
   // we will dispatch to the reducer to send formData.user to the reducer
-  const {dispatch} = useGlobalState()
-  const navigate = useNavigate()
+  //const {dispatch} = useGlobalState()
+  const { dispatch} = useGlobalState()
+  //const { clockedOnWorker} = store
+  // const navigate = useNavigate()
   const initialFormData = {
     username: "",
     password: ""
@@ -21,36 +24,29 @@ function Login() {
     console.log("you pressed submit")
     console.log(formData) // code gets the user and password when button is clicked
     
-    signIn(formData)
-    .then(user => {
-
-      if (user["Error"]) {
-        console.log("Sign-in had an error! It is: " + user["Error"])
-      }
-
-      sessionStorage.setItem("username", user.username)
-      // dispatch calls setLoggedInUser in the reducer with formData.user as the data
+    employeeSignIn(formData)
+    .then(({username, jwt}) => {
+      sessionStorage.setItem(`${username}`, username)
+      sessionStorage.setItem("token", jwt)
+      console.log(sessionStorage.all)
+      // dispatch calls setCurrentUser in the reducer with formData.user as the data
       dispatch({
-        type: "setLoggedInUser",
-        data: user.username
+        type: "setWorker",
+        data: username
       })
-      
+      dispatch({
+        type: "setToken",
+        data: jwt
+      })
       // clears the data from the form fields
       setFormData(initialFormData)
-      if (user.username === "admin") {
-        navigate("/admin")
-      }
-      else if (user.username === "cafe") {
-        // navigate("/shifts")
-        navigate("/cafe") 
-      }
-      else {
-        navigate("/login")
-      }  
+      // navigate("/shifts")
+      
     })
     .catch(e => {console.log(e)})
     
   }
+
 
   const handleFormData = (e) => {
     setFormData({
@@ -63,7 +59,7 @@ function Login() {
 
   return (
     <div>
-        <Typography variant="h4">Login</Typography>
+        <Typography variant="h6">Login</Typography>
             <form onSubmit={handleSubmit}>
               <div>
                 <InputLabel>Username:</InputLabel>
@@ -71,14 +67,14 @@ function Login() {
               </div>
               
               <div>
-                <InputLabel>Password:</InputLabel>
+                <InputLabel>PIN:</InputLabel>
                 <TextField type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
               </div>
               
-              <Button type="submit" variant="contained">Login</Button>
+              <Button type="submit" variant="contained">Verify</Button>
             </form>
     </div>
   )
 }
 
-export default Login
+export default EmployeeLogin
