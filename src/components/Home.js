@@ -4,17 +4,15 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="nav">
-        <nav>
-            <ul>
-              <li>
-                <Link to="/employees">Staff Page</Link>
+    <div className="homepage">
+            <ul className="nav">
+              <li className="navbubble">
+                <Link className="home-link" to="/employees">Staff Page</Link>
               </li>
-              <li>
-                <Link to="/login">Admin</Link>
+              <li className="navbubble">
+                <Link className="home-link" to="/login">Admin</Link>
               </li>
             </ul>
-          </nav>
     </div>
   )
 }
