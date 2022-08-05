@@ -16,6 +16,7 @@ function Employee({employee}) {
 
   const [buttonPopup, setButtonPopup] = useState(false)
     // console.log(shift)
+    //  disabled for testing
     // const handelFinishTime = () =>{
     //     const today = new Date()
     //     let data = {
@@ -25,7 +26,7 @@ function Employee({employee}) {
     //     }
     //     updateShift(data)
     //   }
-  
+   
     return (
       <>
         { !(employee.is_active === "false") &&
