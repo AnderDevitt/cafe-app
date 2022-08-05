@@ -1,12 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+// import { useGlobalState } from '../utils/stateContext'
 import { Button, InputLabel, TextField, Typography } from "@mui/material"
-import { createEmployee } from "../services/employeeServices"
+import { editEmployee } from "../services/employeeServices"
 
 
-const NewEmployeeForm = () => {
-  
+const EditEmployeeForm = (employee) => {
+  // we will dispatch to the reducer to send formData.user to the reducer
+  //const {dispatch} = useGlobalState()
   const navigate = useNavigate()
 
   const initialFormData = {
@@ -15,23 +17,24 @@ const NewEmployeeForm = () => {
     last_name: "",
     password: "",
     password_confirmation: "",
-    is_active: ""
+    is_active: "", 
   }
   
-
+  console.log(initialFormData)
   const [formData, setFormData] = useState(initialFormData)
   
+  console.log(formData)
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("you pressed submit")
     console.log(formData) // code gets the user and password when button is clicked
     
-    createEmployee(formData)
+    editEmployee(formData, employee.id)
     
     // clears the data from the form fields
     setFormData(initialFormData)
     // navigates to the admin page
-    navigate("/admin")
+    navigate("/employees")
   }
   // Assign the input values from most form elements to formData
   const handleFormData = (e) => {
@@ -42,11 +45,18 @@ const NewEmployeeForm = () => {
   }
 
   return (
+    <>
+    
+    
     <div>
-        <Typography variant="h4">Add a new Cafe Employee</Typography>
+      <br></br>
+    
+    </div>
+    <div>
+        <Typography variant="h4">Edit Employee Details</Typography>
             <form onSubmit={handleSubmit}>
               <div>
-                <InputLabel>Username:</InputLabel>
+                <InputLabel>Username: {employee.username}</InputLabel>
                 <TextField type="text" name="username" id="username" value={formData.username} onChange={handleFormData}/>
               </div>
               <div>
@@ -70,10 +80,11 @@ const NewEmployeeForm = () => {
                 <TextField type="text" name="is_active" id="is_active" value={formData.is_active} onChange={handleFormData}/>
               </div>
               
-              <Button type="submit" variant="contained">Add Employee</Button>
+              <Button type="submit" variant="contained">Save Changes</Button>
             </form>
     </div>
+    </>
   )
 }
 
-export default NewEmployeeForm
+export default EditEmployeeForm

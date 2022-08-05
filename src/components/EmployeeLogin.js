@@ -1,17 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
 // import { useNavigate } from "react-router-dom";
-import { useGlobalState } from '../utils/stateContext'
+// import { useGlobalState } from '../utils/stateContext'
 import { Button, InputLabel, TextField, Typography } from "@mui/material"
-import { employeeSignIn } from '../services/authServices';
+// import { employeeSignIn } from '../services/authServices';
+import { signIn } from '../services/authServices';
 
 
 function EmployeeLogin({employee}) {
-  // we will dispatch to the reducer to send formData.user to the reducer
-  //const {dispatch} = useGlobalState()
-  const { dispatch} = useGlobalState()
+  // const { dispatch} = useGlobalState()
   //const { clockedOnWorker} = store
   // const navigate = useNavigate()
+  // we will dispatch to the reducer to send formData.user to the reducer
+  // const initialWorker = {}
+  // const [worker, setWorker] = useState(initialWorker)
+  
+ 
   const initialFormData = {
     username: "",
     password: ""
@@ -24,26 +28,8 @@ function EmployeeLogin({employee}) {
     console.log("you pressed submit")
     console.log(formData) // code gets the user and password when button is clicked
     
-    employeeSignIn(formData)
-    .then(({username, jwt}) => {
-      sessionStorage.setItem("username", username)
-      sessionStorage.setItem("token", jwt)
-      console.log(sessionStorage.all)
-      // dispatch calls setCurrentUser in the reducer with formData.user as the data
-      dispatch({
-        type: "setWorker",
-        data: username
-      })
-      dispatch({
-        type: "setToken",
-        data: jwt
-      })
-      // clears the data from the form fields
-      setFormData(initialFormData)
-      // navigate("/shifts")
-      
-    })
-    .catch(e => {console.log(e)})
+    signIn(formData)
+    
     
   }
 
@@ -54,8 +40,6 @@ function EmployeeLogin({employee}) {
       [e.target.name]: e.target.value
     })
   }
-
-  
 
   return (
     <div>
@@ -68,7 +52,7 @@ function EmployeeLogin({employee}) {
               
               <div>
                 <InputLabel>PIN:</InputLabel>
-                <TextField type="password" name="password" id="password" inputProps={{ maxLength: 4 }} value={formData.password} onChange={handleFormData}/>
+                <TextField type="password" name="password" id="password" inputProps={{ maxLength: 4, inputMode: 'numeric', pattern: '[0-9]*' }} value={formData.password} onChange={handleFormData}/>
               </div>
               
               <Button type="submit" variant="contained">Verify</Button>

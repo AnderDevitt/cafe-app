@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom"
 import { useGlobalState } from "../utils/stateContext"
-import { AppBar, Toolbar, Tab, Tabs } from "@mui/material"
+import { AppBar, Toolbar, Tab, Tabs, Typography } from "@mui/material"
 import "./style/styling" 
 
 const Navbar = () => {
@@ -26,18 +26,16 @@ const Navbar = () => {
 
     return (
         <AppBar position="sticky">
+            <Typography variant="h4">{loggedInUser}</Typography>
             <Toolbar>
                 <Tabs value={false}>
+                    <Tab label="Home" value="/cafe" component={Link} to="/cafe" />
+                    <Tab label="Shifts Page" value="/shifts" component={Link} to="/shifts" />
+                
+                    { !loggedInUser && <Tab label="Admin Log On" value="/login" component={Link} to="/login" />}
                     
-                    { loggedInUser && <Tab label="Employees Page" value="/employees" component={Link} to="/employees" />}
-                    { loggedInUser && <Tab label="Shifts Page" value="/shifts" component={Link} to="/shifts" />}
-                    { loggedInUser && <Tab label="Cafe Page" value="/cafe" component={Link} to="/cafe" />}
                     { (loggedInUser === "admin") && <Tab label="Admin Panel" value="/admin" component={Link} to="/admin" />}
-
-                    { !loggedInUser && <Tab label="Log On" value="/login" component={Link} to="/login" />}
-                    <Tab label={loggedInUser} />
                     { loggedInUser && <Tab label="Log Off" onClick={logout} component={Link} to="/login" />}
-                    <Tab label="Emergency" value="/new_role" component={Link} to="/new_role"  />
                 </Tabs>
             </Toolbar>
         </AppBar>

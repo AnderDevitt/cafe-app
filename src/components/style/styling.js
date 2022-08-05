@@ -48,3 +48,6 @@ export const AppBar = styled.nav`
     width: 100vw;
     background-color: #ffb703;
 `
+export const Popup2 = styled.div`
+    overflow-y: scroll;
+`

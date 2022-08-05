@@ -1,19 +1,10 @@
 import React from 'react'
 import './Popup.css'
-import { useNavigate } from "react-router-dom";
-// import { useGlobalState } from "../utils/stateContext"
-import React from 'react';
-// import { useState, useEffect } from 'react';
 
-function Popup1(props) {
-
-  // const {store, dispatch} = useGlobalState()
-  // const {shiftList} = store
-  const navigate = useNavigate()
-
+function Popup2(props) {
   const close = () => {
       props.setTrigger(false)
-      navigate("/shifts")
+      // navigate("/shifts")
   }
 
   return (props.trigger)? (
@@ -27,4 +18,4 @@ function Popup1(props) {
   ) : ""
 }
 
-export default Popup1
+export default Popup2
