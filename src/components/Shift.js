@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-// import { Link } from "react-router-dom"
 import { Typography, Button, Card, CardContent } from "@mui/material"
 import { updateShift } from '../services/shiftServices';
 import Popup2 from './popups/Popup2';
 import EmployeeLogin from './EmployeeLogin'
-// import ClockOutDialog from './ClockOutDialog'
+
 
 function Shift({shift}) {
   
