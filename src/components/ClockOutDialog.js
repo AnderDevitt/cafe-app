@@ -11,7 +11,7 @@ import EmployeeLogin from './EmployeeLogin'
 export default function ClockOutDialog({shift}) {
   
   const [open, setOpen] = React.useState(false)
-  const today = new Date()
+  // const today = new Date()
 
   // Open and close the dialog box
   const handleClickOpen = () => {
@@ -23,22 +23,35 @@ export default function ClockOutDialog({shift}) {
 
   // Sets the new finish time and clocked_out value when a user is clocking out
   // Then call updateShift to send the data to the back-end api
+  // const handleFinishTime = (e) =>{
+  //   e.preventDefault()
+  //   const today = new Date()
+  //       let data = {
+  //        id: shift.id,   
+  //        finish: today.toLocaleTimeString(),
+  //        clocked_out: true
+  //       }
+  //       // updateShift(data)
+      
+  //   console.log(data)
+  //   updateShift(data)
+  //   .then(
+  //     console.log("Shift time updated in Employee.js: " +  data)
+  //   )
+  //   .catch(e => {console.log(e)})
+  //   handleClose()
+  // }  
   const handleFinishTime = (e) =>{
     e.preventDefault()
+    const today = new Date()
     let data = {
-     shift_id: shift.id,   
+     id: shift.id,   
      finish: today.toLocaleTimeString(),
      clocked_out: true
     }
-    console.log(data)
     updateShift(data)
-    .then(
-      console.log("Shift time updated in Employee.js: " +  data)
-    )
-    .catch(e => {console.log(e)})
     handleClose()
-  }  
-    
+  }
     
   // Contents of the dialog box which includes EmployeeLogin component to verify the employee
   return (
