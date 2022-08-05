@@ -16,6 +16,7 @@ function Employee({employee}) {
 
   const [buttonPopup, setButtonPopup] = useState(false)
     // console.log(shift)
+    // Function was not working as expected any more
     // const handelFinishTime = () =>{
     //     const today = new Date()
     //     let data = {
