@@ -4,7 +4,7 @@ import { Typography, Button, Card, CardContent } from "@mui/material"
 import { updateShift } from '../services/shiftServices';
 import Popup2 from './popups/Popup1';
 import EmployeeLogin from './EmployeeLogin'
-// import ClockOutDialog from './ClockOutDialog'
+
 
 function Shift({shift}) {
   
@@ -30,9 +30,7 @@ function Shift({shift}) {
                 <Typography variant="h7">{shift.date}</Typography>
                 <Typography variant="h5">Start Time: {shift.start}</Typography>
                 {/* <Button name="finish" id={shift.finish} value={shift.finish} onClick={handelFinishTime} >Finish My Shift</Button> */}
-                <Button onClick={() => setButtonPopup(true)}>End Shift</Button>    
-                {/* <input type="submit" value="Clock Out" /> */}
-                {/* <ClockOutDialog employee={shift} /> */}
+                <Button onClick={() => setButtonPopup(true)}>Open Popup</Button>    
                 </CardContent>
           
                 </Card>

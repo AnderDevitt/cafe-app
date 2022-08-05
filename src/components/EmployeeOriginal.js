@@ -31,7 +31,7 @@ const Employee = ({employee}) => {
     return (
         <>
             {/* Check that only active employees are on the list to check in for a shift */}
-            { employee.is_active === "true" ?
+            { ((employee.is_active === "true") && !(employee.shift.clocked_out == false)) ?
                 <EmployeeContainer>
                     <h4>{employee.first_name} {employee.last_name}</h4>
                     <div>

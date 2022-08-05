@@ -1,4 +1,4 @@
-import EmployeeOriginal from "./Employee"
+import Employee from "./Employee"
 // import Shift from "./Shift" 
 import { useGlobalState } from "../utils/stateContext"
 // import { ActiveStaff, CurrentShift } from "./style/styling" 
@@ -34,7 +34,7 @@ const CafeView = () => {
                 <ActiveStaff>
                     {employeeList.map(employee =>
                     <>
-                        <EmployeeOriginal key={employee.id} employee={employee} />  
+                        <Employee key={employee.id} employee={employee} />  
                         
                     </>
                           

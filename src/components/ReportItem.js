@@ -1,13 +1,16 @@
 import React from "react";
 import Moment from "react-moment";
+import { Card, CardContent } from "@mui/material"
 import "../stylesheet.css";
 
 const ReportItem = ({ shift, employee, date }) => {
+  const moment = require('moment');
   return (
     <>
       {/* Check that only active employees are on the list to check in for a shift */}
-      {date.toLocaleDateString(['ban', 'id']) === shift.date ? (
-        <div className="report-item">
+      {moment(date).format('YYYY-MM-DD') === shift.date && (
+        <Card className="report-item">
+          <CardContent>
           <h3>Date: {shift.date}</h3>
           <div>
             <h2>
@@ -21,13 +24,9 @@ const ReportItem = ({ shift, employee, date }) => {
               <span>Finish:</span>
               <Moment format="hh:mm:ss">{shift.finish}</Moment>
             </div>
-            <p>Hours: {shift.hours}</p>
           </div>
-        </div>
-      ) : (
-        <>
-          <p>No Shifts on this Date</p>
-        </>
+          </CardContent>
+        </Card>
       )}
     </>
   );

@@ -1,59 +1,29 @@
 
 import Shift from "./Shift" 
-import { useGlobalState } from "../utils/stateContext"
-import React from 'react';
+// import { useGlobalState } from "../utils/stateContext"
+import React, {useState, useEffect } from 'react';
 import { CurrentShift} from "./style/styling" 
-// import { getShifts } from '../services/shiftServices';
+import { getShifts } from '../services/shiftServices';
 // import { getCurrentShifts } from '../services/shiftServices';
 
 
 const Shifts = () => {
-  // const {store, dispatch} = useGlobalState()  
-  const {store} = useGlobalState()
-    const {shiftList} = store
-    // const {currentShiftList} = store    
+  const initialShiftList = []
+  const [shiftList, setShiftList] = useState(initialShiftList)  
+     
     console.log("Shift List in Shifts.js: " + shiftList)
 
-      // useEffect (
-      //   () => {
-      // getShifts()
-      // .then(shifts => {
-      //   dispatch({
-      //     type: "setEmployeeList",
-      //     data: shifts
-      //   })
-      // })
-      // .catch(e => {console.log(e)})
-      //       .then(shifts => {
-      //         dispatch({
-      //           type: "setShiftList",
-      //           data: shifts
-      //         })
-      //       })
-      //   },
-      //   [{shiftList}]
-      // )
-      // getShifts()
-        // .then(shifts => {
-        //   dispatch({
-        //     type: "setShiftList",
-        //     data: shifts
-        //   })
-        // })
-      // useEffect (
-      //   () => {
-      //     getCurrentShifts()
-      //       .then(shifts => {
-      //         dispatch({
-      //           type: "setcurrentShiftList",
-      //           data: shifts
-      //         })
-      //       })
-      //       console.log(currentShiftList)    
-      //   },
-      //   []
-      // )
-
+      useEffect (
+        () => {
+      getShifts()
+      .then(shifts => {
+        setShiftList(shifts)
+      })
+      .catch(e => {console.log(e)})
+      },
+        []
+      )
+      
     return (
         <>   
             <br></br>

@@ -11,7 +11,7 @@ import Admin from './Admin'
 import Login from './Login'
 // import Report from './Report'
 import Employees from './Employees'
-// import Shifts from './Shifts'
+import Shifts from './Shifts'
 import Navbar from './Navbar'
 import Footer from './Footer';
 import Header from './Header';
@@ -87,7 +87,7 @@ const App = () => {
             {/* Routes related to Employee Operations  */}
             <Route path="/employee_login" element={<EmployeeLogin />} />
             <Route path="/employees" element={<Employees />} />
-            {/* <Route path="/shifts" element={<Shifts />} /> */}
+            <Route path="/shifts" element={<Shifts />} />
             <Route path="/cafe" element={<CafeView />} />
             {/* <Route path="/employee" element={<Employee_original />} /> */}
     
