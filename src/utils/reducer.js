@@ -84,9 +84,7 @@ export const reducer = (state, action) => {
 export const initialState = {
     employeeList: [],
     shiftList: [],
-    // currentShiftList: [],
     loggedInUser: sessionStorage.getItem("username") || "",
     clockedOnWorker: sessionStorage.getItem("username") || "",
-    // currentShift: sessionStorage.getItem("id") || null,
     token: sessionStorage.getItem("token") || null
   }

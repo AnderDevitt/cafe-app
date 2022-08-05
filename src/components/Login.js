@@ -40,12 +40,8 @@ function Login() {
       if (user.username === "admin") {
         navigate("/admin")
       }
-      else if (user.username === "cafe") {
-        // navigate("/shifts")
-        navigate("/cafe") 
-      }
       else {
-        navigate("/login")
+        navigate("/cafe")
       }  
     })
     .catch(e => {console.log(e)})

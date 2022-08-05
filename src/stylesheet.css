@@ -65,3 +65,7 @@
     margin: 5px;
     padding: 2px
 }
+
+.form {
+    overflow-y: scroll;
+}

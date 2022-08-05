@@ -1,27 +1,37 @@
 
 import Shift from "./Shift" 
-// import { useGlobalState } from "../utils/stateContext"
-import React, {useState, useEffect } from 'react';
+import { useGlobalState } from "../utils/stateContext"
+import React, { useEffect } from 'react';
 import { CurrentShift} from "./style/styling" 
 import { getShifts } from '../services/shiftServices';
-// import { getCurrentShifts } from '../services/shiftServices';
 import { Typography } from "@mui/material"
+import { useLocation } from 'react-router-dom'
 
 const Shifts = () => {
-  const initialShiftList = []
-  const [shiftList, setShiftList] = useState(initialShiftList)  
-     
-    console.log("Shift List in Shifts.js: " + shiftList)
+  const {store, dispatch} = useGlobalState()
+  const {shiftList} = store
+  
+  const location = useLocation()
+
+    console.log(location)
+    // console.log("Shift List in Shifts.js: " + shiftList)
 
       useEffect (
         () => {
-      getShifts()
-      .then(shifts => {
-        setShiftList(shifts)
-      })
-      .catch(e => {console.log(e)})
-      },
-        []
+          // If the location is /shifts then a re-render of the shifts list will be triggered
+          if (location.pathname === "/shifts") {
+            // connect to the backend api and get the shifts, then dispatch to the reducer to initialise the shiftList
+          getShifts()
+          .then(shift => {
+            dispatch({
+              type: "setShiftList",
+              data: shift
+            })
+          })
+          .catch(e => {console.log(e)})
+          }  
+        },
+        [location] // triggers the useEffect to refresh list of shifts when location changes
       )
       
     return (
