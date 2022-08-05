@@ -86,7 +86,7 @@ export const initialState = {
     shiftList: [],
     // currentShiftList: [],
     loggedInUser: sessionStorage.getItem("username") || "",
-    clockedOnWorker: sessionStorage.getItem("username2") || "",
+    clockedOnWorker: sessionStorage.getItem("username") || "",
     // currentShift: sessionStorage.getItem("id") || null,
     token: sessionStorage.getItem("token") || null
   }

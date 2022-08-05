@@ -26,7 +26,7 @@ function EmployeeLogin({employee}) {
     
     employeeSignIn(formData)
     .then(({username, jwt}) => {
-      sessionStorage.setItem(`${username}`, username)
+      sessionStorage.setItem("username", username)
       sessionStorage.setItem("token", jwt)
       console.log(sessionStorage.all)
       // dispatch calls setCurrentUser in the reducer with formData.user as the data

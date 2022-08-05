@@ -26,10 +26,11 @@ export default function ClockOutDialog({shift}) {
   const handleFinishTime = (e) =>{
     e.preventDefault()
     let data = {
-     id: shift.id,   
+     shift_id: shift.id,   
      finish: today.toLocaleTimeString(),
      clocked_out: true
     }
+    console.log(data)
     updateShift(data)
     .then(
       console.log("Shift time updated in Employee.js: " +  data)

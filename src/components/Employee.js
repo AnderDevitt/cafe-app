@@ -1,6 +1,6 @@
 import React from 'react'
 // import { Link } from "react-router-dom"
-// import { useGlobalState } from '../utils/stateContext'
+import { useGlobalState } from '../utils/stateContext'
 import { Typography, Card, CardContent } from "@mui/material"
 
 
@@ -12,22 +12,25 @@ import ClockOutDialog from './ClockOutDialog'
 
 function Employee({employee, shift}) {
   
-  
+  const {store} = useGlobalState()
+    const {clockedOnWorker} = store
   
 
   return (
     <>
-      <Card>
-        <CardContent>
-        <Typography variant="h5">{employee.first_name} {employee.last_name} </Typography>
-        {/* { working && <Typography variant="h6">You are {onShift}. </Typography> } */}
-        
-        {/* <Typography variant="h6">You are clocked on. </Typography>     */}
-        
-          <ClockInDialog employee={employee} />
-          <ClockOutDialog employee={shift} />
-        </CardContent>
-      </Card> 
+      { !(employee.is_active === "false") &&
+        <Card>
+          <CardContent>
+          <Typography variant="h5">{employee.first_name} {employee.last_name} </Typography>
+          {/* { working && <Typography variant="h6">You are {onShift}. </Typography> } */}
+          
+          {/* <Typography variant="h6">You are clocked on. </Typography>     */}
+          
+            <ClockInDialog employee={employee} />
+            { clockedOnWorker && <ClockOutDialog employee={shift} /> }
+          </CardContent>
+        </Card> 
+      }
     </>
   )
 }
