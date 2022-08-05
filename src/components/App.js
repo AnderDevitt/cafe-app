@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Admin from './Admin'
 import Login from './Login'
-// import Report from './Report'
+import Report from './Report'
 import Employees from './Employees'
 import Shifts from './Shifts'
 import Navbar from './Navbar'
@@ -82,7 +82,7 @@ const App = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/new_role" element={<NewRoleForm />} />
             <Route path="/new_employee" element={<NewEmployeeForm />} />
-            {/* <Route path="/reports" element={<Report />} /> */}
+            <Route path="/reports" element={<Report />} />
 
             {/* Routes related to Employee Operations  */}
             <Route path="/employee_login" element={<EmployeeLogin />} />

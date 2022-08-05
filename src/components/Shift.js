@@ -39,7 +39,7 @@ function Shift({shift}) {
         }
         <br></br> 
         <Popup2 trigger={buttonPopup} setTrigger = {setButtonPopup}>
-        <h3>My popup</h3> 
+        <Typography variant="h6">Finish your shift</Typography> 
         <EmployeeLogin />
         <Button name="finish" id={shift.finish} value={shift.finish} onClick={handelFinishTime} >Finish My Shift</Button>
       </Popup2>  

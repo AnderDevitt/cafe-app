@@ -5,7 +5,7 @@ import React, {useState, useEffect } from 'react';
 import { CurrentShift} from "./style/styling" 
 import { getShifts } from '../services/shiftServices';
 // import { getCurrentShifts } from '../services/shiftServices';
-
+import { Typography } from "@mui/material"
 
 const Shifts = () => {
   const initialShiftList = []
@@ -25,7 +25,9 @@ const Shifts = () => {
       )
       
     return (
-        <>   
+        <>  
+          <br></br> 
+          <Typography variant="h4">Staff on Shifts </Typography>
             <br></br>
             
             <CurrentShift>

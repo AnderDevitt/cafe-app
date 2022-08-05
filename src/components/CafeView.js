@@ -30,7 +30,7 @@ const CafeView = () => {
                 <Clock value={value} />
             </div>
             <EmployeeContainer>
-                <Typography variant="h4">Cafe Staff</Typography>
+                <Typography variant="h4">Available Cafe Staff</Typography>
                 <ActiveStaff>
                     {employeeList.map(employee =>
                     <>

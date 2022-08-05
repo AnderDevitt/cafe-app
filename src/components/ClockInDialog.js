@@ -49,7 +49,7 @@ export default function ClockInDialog({employee}) {
         <DialogTitle>Start Your Shift</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          Enter your username and PIN number then click Verify.
+          {/* Enter your username and PIN number then click Verify. */}
           </DialogContentText>
             <EmployeeLogin />
         </DialogContent>

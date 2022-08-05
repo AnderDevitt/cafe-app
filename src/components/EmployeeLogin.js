@@ -59,7 +59,7 @@ function EmployeeLogin({employee}) {
 
   return (
     <div>
-        <Typography variant="h6">Login</Typography>
+        <Typography variant="h7">Enter your username and PIN number then click Verify.</Typography>
             <form onSubmit={handleSubmit}>
               <div>
                 <InputLabel>Username:</InputLabel>
@@ -68,7 +68,7 @@ function EmployeeLogin({employee}) {
               
               <div>
                 <InputLabel>PIN:</InputLabel>
-                <TextField type="password" name="password" id="password" value={formData.password} onChange={handleFormData}/>
+                <TextField type="password" name="password" id="password" inputProps={{ maxLength: 4 }} value={formData.password} onChange={handleFormData}/>
               </div>
               
               <Button type="submit" variant="contained">Verify</Button>
