@@ -12,7 +12,7 @@ const ReportItem = ({ shift, employee }) => {
           <h3>Date: {shift.date}</h3>
           <div>
             <h2>
-              {employee.first_name} {employee.last_name}
+              {shift.first_name} {shift.last_name}
             </h2>
             <div>
               <span>Start:</span> {shift.start}
