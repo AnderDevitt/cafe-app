@@ -4,8 +4,8 @@ import axios from "axios"
 // import 'dotenv/config'
 
 const cafeAPI = axios.create({
-    // baseURL: process.env.BACKEND_URL
-    baseURL: 'https://als-cafe-api.herokuapp.com'
+    baseURL: process.env.REACT_APP_BACKEND_URL
+    
 })
 
 cafeAPI.interceptors.request.use(req => {
