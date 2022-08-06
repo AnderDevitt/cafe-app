@@ -20,19 +20,33 @@ const NewEmployeeForm = () => {
   
 
   const [formData, setFormData] = useState(initialFormData)
-  
+  const [error, setError] = useState(null)
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("you pressed submit")
-    console.log(formData) // code gets the user and password when button is clicked
     
     createEmployee(formData)
+      .then((user) => {
+        console.log(user)
+        let errorMessage = ""
+        if (user.error) {
+          console.log(user.error)
+          Object.keys(user.error).forEach(key => {
+            errorMessage = errorMessage.concat(`${key} ${user.error[key]}`)
+          })
+          setError(errorMessage)
+        } else {
+          // clears the data from the form fields
+          setFormData(initialFormData)
+          // navigates to the admin page
+          navigate("/admin")
+        }
+      })
+      .catch(e => {console.log(e)})
     
-    // clears the data from the form fields
-    setFormData(initialFormData)
-    // navigates to the admin page
-    navigate("/admin")
+    
   }
+
   // Assign the input values from most form elements to formData
   const handleFormData = (e) => {
     setFormData({
@@ -45,6 +59,7 @@ const NewEmployeeForm = () => {
     <div>
         <Typography variant="h4">Add a new Cafe Employee</Typography>
             <form onSubmit={handleSubmit}>
+            {error && <p>{error}</p>}
               <div>
                 <InputLabel>Username:</InputLabel>
                 <TextField type="text" name="username" id="username" value={formData.username} onChange={handleFormData}/>

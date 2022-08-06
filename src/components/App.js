@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Routes as Switch,
   Route,
+  Navigate
 } from "react-router-dom";
 import Admin from './Admin'
 import Login from './Login'
@@ -40,7 +41,7 @@ const App = () => {
           {/* The routes using switch alias */}
           <Switch>
             {/* System login routes */}
-            <Route path="/" element={<CafeView />} />
+            <Route path="/" element={<Navigate to="/cafe" />} />
             <Route path="/login" element={<Login />} />
 
             {/* Routes related to Admin Operations */}
