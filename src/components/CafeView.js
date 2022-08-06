@@ -16,7 +16,7 @@ const CafeView = () => {
     
 
     const location = useLocation()
-    console.log(location)
+    
     useEffect (
         () => {
           if (location.pathname === "/cafe") {

@@ -32,7 +32,7 @@ export default function ClockInDialog({employee}) {
       employee_id: employee.id,
       clocked_out: false
     }
-    console.log(data)
+    
     createShift(data)
       .then((response) => {
         console.log("New Shift created in Employee.js: " +  response)

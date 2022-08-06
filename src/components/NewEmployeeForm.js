@@ -27,10 +27,8 @@ const NewEmployeeForm = () => {
     
     createEmployee(formData)
       .then((user) => {
-        console.log(user)
         let errorMessage = ""
         if (user.error) {
-          console.log(user.error)
           Object.keys(user.error).forEach(key => {
             errorMessage = errorMessage.concat(`${key} ${user.error[key]}`)
           })

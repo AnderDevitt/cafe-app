@@ -5,9 +5,7 @@
 // the reducer must return data
 
 export const reducer = (state, action) => {
-    // console.log(state)
-    // console.log(action)
-
+  
     switch(action.type) {
         case "setEmployeeList": {
             // input the initial values into employeeList

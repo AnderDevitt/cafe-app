@@ -19,14 +19,10 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("you pressed submit")
-    console.log(formData) // code gets the user and password when button is clicked
     
     signIn(formData)
     .then(user => {
-      console.log(user)
       if (user.error) {
-        console.log("user.error", user.error)
         setError(user.error)
       } else {
         setError(null)
