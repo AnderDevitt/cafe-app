@@ -18,7 +18,6 @@ https://wonderful-meerkat-7d4755.netlify.app
 ### Rails Backend (Heroku)
 https://als-cafe-api.herokuapp.com/
 
-The backend was working for testing from Postman and the App, but I started getting a Cors Header 431 error around 6pm Saturday. And it's beyond me now.
 
 ## Presentation Slides
 [slides_pdf_file](./docs/presentation.pdf)
@@ -28,7 +27,7 @@ The backend was working for testing from Postman and the App, but I started gett
 This website is an application designed for a local cafe where the manager wishes to have a system that will track staff sign-in and sign-out times for their shifts and then allow the manager to output reports based on this data. The application will not be connected to any other systems such as employee databases or payroll, and is to be a self-contained app that will run on a tablet in the cafe for staff to use when clocking in and out, and the managers PC for administrator access.
 
 ## PURPOSE - Achievement
-The first purpose (recording staff shift times) has been achieved to a degree with a few ongoing issues. Unfortunately, the libraries and approaches taken caused many work-arounds to be necessary to achieve this. There are some quirks that will be fixed in the next iteration. The second purpose (admin functionality) has been partially achieved. 
+The first purpose (recording staff shift times) has been achieved to a degree with a few ongoing issues. Unfortunately, the libraries and approaches taken caused many work-arounds to be necessary to achieve this. There are some quirks that will be fixed in the next iteration. The second purpose (admin functionality) has been partially mostly achieved by submission. 
 
 ## FUNCTIONALITY AND FEATURES  - Achievement and Changes
 
@@ -39,10 +38,12 @@ The Navbar functions pretty much as the design required. There have been some ch
 The original design called for a single page which rendered each employee on a card with a form that took a pin (password) and had two buttons "start" and "stop". All of the initial code featured this, but while we could start and stop a shift (create and edit a shift in the database), we had trouble indicating when a shift was active. The eventual workaround divided this into two pages Cafe and Shifts. It's not ideal, and not as DRY as we would like, but it does achieve the required function.
 
 What we have, it that and employee can begin a shift on the Cafe Home page, which displays a list of staff that are currently available to work. When an employee chooses to begin their shift, a popup window will open and they will be prompted to enter their username and pin to verify their id. A glitch that I was unable to solve (we tried a few times with educators assisstance) is that often any user can enter their credentials for another to begin that employee's shift.
+
 ![loading_page](./docs/cafe-home-page.png)
 ![loading_page](./docs/start-shift.png)
 
 Navigating the the Shifts Page shows any shifts that are currently running. From their card, users can see the date, when they clocked-in and can choose to end their shift, again by validating with pin and username. Unfortunately, again this didn't always work. Especially if check_ownership and authenticate_employee were used in the shifts controller in the api.  
+
 ![loading_page](./docs/shifts-page.png)
 ![loading_page](./docs/end-shift.png)
 ![shifts_page](./docs/wireframe_shift.PNG)
@@ -60,23 +61,19 @@ The admin currently can:
 - Allow the editing of an existing staff member's details.
 - Allow staff status to be changed from active (available to work) and deactive (currently unavailable or no longer employed). Due to the nature of the database and purpose for this data, it is undesireable for staff data to be deleted at any time.
 
-Most of the basic goals are done for the admin as required in the planning. Unfortunately the Report Generation (at the time of writing this) has not been operational.
+Most of the basic goals are done for the admin as required in the planning. The Generate Report function looks good and Is operational, however there is a glitch where only one shift was rendering and new shifts weren't being added. But it's a great basis for the future.
+
 ![loading_page](./docs/admin-panel.png)
 ![admin_page](./docs/wireframe_admin.PNG)
 
 
 ### Generate Reports
-This feature was not achieved to the planned degree. We will continue to work on this in future edits. It should at the least display a table of shifts for a given date range. 
+The component has a great date selector to choose the date range for shifts to display. There is a glitch affecting the results, but we will continue to work on this in future edits. I hope to be able to search by user in the future too. Though that was not a required feature from the client meeting.  
 
-## TARGET AUDIENCE
-Cafe Staff 
-- The application can record the data for staff in the cafe clocking in/out. Multiple users can begin and end shifts from the same terminal and the data stores in the database.
-Manager
-- He can add and edit staff details. More work is needed on the reports to meet client requirements.
 
 ## TECH STACK
 
-The tech stack used for this application was the following.
+As planned, the tech stack used for this application was the following.
 
 ### Code
 
@@ -110,15 +107,29 @@ The tech stack used for this application was the following.
 
 ## LIBRARIES USED
 
+#### Bcrypt
+We used Bcrypt to handle password encryption in the backend
 
+#### Knock
+Used for user authentication and JWT tokens to pass to and from the front end for user sessions.
+
+#### Axios
+Linking (making) requests for the front end and back end.
+
+#### Cerate React App
+Used to build the app with the files, structures and parts needed for testing and launching the app.
+
+#### React Router
+A collection of navigating components for our app page.
+
+#### Material UI and Stylled Components
+We used Material UI and Styled Components because they are designed to work with React, and look good. 
+
+MUI has a lot of useful pre-built items, though we did have issues when the import links for different features like MUI Icons were dead.  
+
+Styled Components are great for styling everything throught an app and the integration with MUI was appealing. Andrew was using this more, but we do have very different styling skills though as is apparent and didn't have a uniform system. Raj did great work with his CSS.
 
 ## USER STORIES
-
-The user personas are: user, active staff member, admin.
-
-User: In the context of the app, a user is a staff member with a password for the applicaion.
-Active Staff Member: Staff members can be deactivated by the manager when they no longer work for the cafe or take an extended break. Active members are visible on the Web Client when staff are logging their shift times.
-Admin: This is the manager for the cafe.
 
 ### User
 
@@ -149,6 +160,7 @@ Admin: This is the manager for the cafe.
 
 Our team has used Trello as a project management tool.
 
+Part A
 ![trello_screenshot](./docs/t1.png)
 ![trello_screenshot](./docs/t2.png)
 ![trello_screenshot](./docs/t3.png)
@@ -159,6 +171,26 @@ Our team has used Trello as a project management tool.
 ![trello_screenshot](./docs/t8.png)
 ![trello_screenshot](./docs/t9.png)
 ![trello_screenshot](./docs/t10.PNG)
+
+Part B
+![trello_screenshot](./docs/Screenshot_2022-07-23_13-07-46.png)
+![trello_screenshot](./docs/Screenshot_2022-07-23_22-33-17.png)
+![trello_screenshot](./docs/Screenshot_2022-07-25_13-48-27.png)
+![trello_screenshot](./docs/Screenshot_2022-07-27_15-37-09.png)
+![trello_screenshot](./docs/Screenshot_2022-07-29_00-15-43.png)
+![trello_screenshot](./docs/Screenshot_2022-08-03_00-47-46.png)
+![trello_screenshot](./docs/Screenshot_2022-08-04_12-36-53.png)
+![trello_screenshot](./docs/Screenshot_2022-08-05_11-16-37.png)
+
+### Testing
+Throughout the project manual testing was done in the browser tools, terminal console and Postman. Pre and post deployment. Some automatic testing was written, but Andrew deleted the tests he wrote early on when resetting the database design.
+
+![test_screenshot](./docs/testing-Raj.png)
+![test_screenshot](./docs/browser1.png)
+![test_screenshot](./docs/postman.png)
+![test_screenshot](./docs/postman2.png)
+![test_screenshot](./docs/postman3.png)
+
 
 # T3A2A-Final-Coder-Assessment-Part-A
 
