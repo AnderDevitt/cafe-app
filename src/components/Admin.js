@@ -9,22 +9,6 @@ import { Typography, Link } from '@mui/material'
 
 function Admin() {
   return (
-    // <div>
-    //   <h1> Admin Page</h1>
-    //   <nav>
-    //     <ul>
-    //       <li>
-    //         <Link to="/admin_panel">Edit Staff</Link>
-    //       </li>
-    //       <li>
-    //         <Link to="/new_role">Add System Login</Link>
-    //       </li>
-    //       <li>
-    //         <Link to="/reports">Generate Report</Link>
-    //       </li>
-    //     </ul>
-    //   </nav>
-    // </div>
     <div>
       <Typography variant="h4">Admin Panel</Typography>
       <Typography>Click on a section panel to display options</Typography>
@@ -65,10 +49,13 @@ function Admin() {
             <Link href="/new_employee" underline="hover">
               {'New Employee'}
             </Link>
+            <Link href="/cafe" underline="hover">
+              {'Edit Employee Details'}
+            </Link>
           </AccordionDetails>
         </Accordion>
 
-        {/* Third group for system login roles CRUD options */}
+        {/* Third group for system login roles CRUD options
         <Accordion>
           <AccordionSummary
             // expandIcon={<ExpandMoreIcon />}
@@ -85,7 +72,7 @@ function Admin() {
               {'New Login'}
             </Link>
           </AccordionDetails>
-        </Accordion>
+        </Accordion> */}
       </div>
     </div>
   )

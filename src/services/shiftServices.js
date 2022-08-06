@@ -6,12 +6,20 @@ export async function getShifts() {
     return response.data
 }
 
-export async function getCurrentShifts() {
-    const response = await cafeAPI.get('/shifts_current')
+export async function getEmployeeShifts(username) {
+    const response = await cafeAPI.get('/shifts/employee')
     console.log("createCurrentShifts response is an object (key-value pair) with these keys: " + Object.keys(response.data))
     console.log(response.data)
     return response.data
 }
+
+export async function getShiftsByEmployee(username) {
+    const response = await cafeAPI.get(`/shifts?username=${username}`)
+    console.log(response.data)
+    return response.data
+}
+
+
 
 export async function createShift(data) {
     const response = await cafeAPI.post('/shifts_new', data)
