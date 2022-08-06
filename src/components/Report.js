@@ -33,7 +33,7 @@ function Report() {
       .catch(e => {console.log(e)})
       }  
     },
-    [location] // triggers the useEffect to refresh list of shifts when location changes
+    [location, dispatch] // triggers the useEffect to refresh list of shifts when location changes
   )
   useEffect (
     () => {
@@ -49,7 +49,7 @@ function Report() {
       .catch(e => {console.log(e)})
       }  
     },
-    [location] // triggers the useEffect to refresh list of employees when location changes
+    [location, dispatch] // triggers the useEffect to refresh list of employees when location changes
   )
 
   const [startDate, setStartDate] = useState(new Date());

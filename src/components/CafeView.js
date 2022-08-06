@@ -2,7 +2,7 @@ import Employee from "./Employee"
 // import Shift from "./Shift" 
 import { useGlobalState } from "../utils/stateContext"
 // import { ActiveStaff, CurrentShift } from "./style/styling" 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Typography } from "@mui/material"
 // import Clock from 'react-clock';
 // import 'react-clock/dist/Clock.css'
