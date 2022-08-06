@@ -49,7 +49,7 @@ function Admin() {
             <Link href="/new_employee" underline="hover">
               {'New Employee'}
             </Link>
-            <Link href="/employees" underline="hover">
+            <Link href="/cafe" underline="hover">
               {'Edit Employee Details'}
             </Link>
           </AccordionDetails>

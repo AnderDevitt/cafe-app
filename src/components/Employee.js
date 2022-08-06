@@ -16,7 +16,10 @@ function Employee({employee}) {
 
   const [buttonPopup, setButtonPopup] = useState(false)
     // console.log(shift)
-    //  disabled for testing
+
+
+    // Function was not working as expected any more
+
     // const handelFinishTime = () =>{
     //     const today = new Date()
     //     let data = {
@@ -29,7 +32,10 @@ function Employee({employee}) {
    
     return (
       <>
-        { !(employee.is_active === "false") &&
+        {/* I tried but couldn't think of a way not to repeat these 2 blocks */}
+        
+        {/* Limits the employee list seen by staff on Cafe Page to only active/available staff */}
+        { (!(employee.is_active === "false") && !(loggedInUser === "admin")) &&
           <Card>
             <CardContent>
               <Typography variant="h5">{employee.first_name} {employee.last_name} </Typography>    
@@ -38,6 +44,17 @@ function Employee({employee}) {
             </CardContent>
           </Card> 
         }
+        {/* The employee list seen by the Admin on Cafe Page shows all staff and the link to edit their details */}
+        { (loggedInUser === "admin") &&
+          <Card>
+          <CardContent>
+            <Typography variant="h5">{employee.first_name} {employee.last_name} </Typography>    
+            { !(loggedInUser === "admin") &&<ClockInDialog employee={employee} /> }
+            { (loggedInUser === "admin") &&<Button onClick={() => setButtonPopup(true)}>Edit Details</Button> }
+          </CardContent>
+        </Card> 
+        }
+
         <br></br> 
         <br></br>
         <Popup2 trigger={buttonPopup} setTrigger = {setButtonPopup}>

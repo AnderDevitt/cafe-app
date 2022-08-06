@@ -15,6 +15,7 @@ function Login() {
   }
 
   const [formData, setFormData] = useState(initialFormData)
+  const [error, setError] = useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -23,28 +24,37 @@ function Login() {
     
     signIn(formData)
     .then(user => {
+      console.log(user)
+      if (user.error) {
+        console.log("user.error", user.error)
+        setError(user.error)
+      } else {
+        setError(null)
+        sessionStorage.setItem("username", user.username)
+        sessionStorage.setItem("token", user.jwt)
+        // dispatch calls setLoggedInUser in the reducer with formData.user as the data
+        dispatch({
+          type: "setLoggedInUser",
+          data: user.username
+        })
+        dispatch({
+          type: "setToken",
+          data: user.jwt
+        })
 
-      if (user["Error"]) {
-        console.log("Sign-in had an error! It is: " + user["Error"])
+        // clears the data from the form fields
+        setFormData(initialFormData)
+        if (user.username === "admin") {
+          navigate("/admin")
+        } else {
+          navigate("/cafe")
+        }  
       }
-
-      sessionStorage.setItem("username", user.username)
-      // dispatch calls setLoggedInUser in the reducer with formData.user as the data
-      dispatch({
-        type: "setLoggedInUser",
-        data: user.username
-      })
-      
-      // clears the data from the form fields
-      setFormData(initialFormData)
-      if (user.username === "admin") {
-        navigate("/admin")
-      }
-      else {
-        navigate("/cafe")
-      }  
     })
     .catch(e => {console.log(e)})
+      
+      
+      
     
   }
 
@@ -60,6 +70,7 @@ function Login() {
   return (
     <div>
         <Typography variant="h4">Login</Typography>
+        {error && <p>{error}</p>}
             <form onSubmit={handleSubmit}>
               <div>
                 <InputLabel>Username:</InputLabel>
