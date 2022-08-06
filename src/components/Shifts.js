@@ -23,24 +23,23 @@ const Shifts = () => {
 
       useEffect (
         () => {
+          
           // If the location is /shifts then a re-render of the shifts list will be triggered
           if (location.pathname === "/shifts") {
-            // connect to the backend api and get the shifts, then dispatch to the reducer to initialise the shiftList
-          getShifts()
-          .then(shifts => {
-            if (shifts.error) {
-              console.log(shifts.error)
-            } else {
-              dispatch({
-                type: "setShiftList",
-                data: shifts
+          // connect to the backend api and get the shifts, then dispatch to the reducer to initialise the shiftList
+            getShifts()
+            .then(shifts => {
+              // if (shifts.error) {
+              //   console.log(shifts.error)
+              // } else {
+                dispatch({
+                  type: "setShiftList",
+                  data: shifts
+                })
               })
-            }
-          })
-          .catch(e => {console.log(e)})
-
+              .catch(e => {console.log(e)})  
+          }
           // I had this getShiftsByEmployee working in a previous branch but unfortunately I broke it and lost all the backend and frontend work I had done
-
           // } else if (params.username) {
           //   getShiftsByEmployee(params.username)
           //   .then(shifts => {
@@ -59,9 +58,9 @@ const Shifts = () => {
           //     }
           //   })
           //   .catch(e => {console.log(e)})
-          } 
+          // } 
         },
-        [location] // triggers the useEffect to refresh list of shifts when location changes
+        [dispatch, location] // triggers the useEffect to refresh list of shifts when location changes
       )
       
     return (

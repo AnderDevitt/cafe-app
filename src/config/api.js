@@ -1,9 +1,11 @@
 // information from the backend (url)
 
 import axios from "axios"
+// import 'dotenv/config'
 
 const cafeAPI = axios.create({
-    baseURL: 'http://localhost:4000'
+    baseURL: process.env.REACT_APP_BACKEND_URL
+    
 })
 
 cafeAPI.interceptors.request.use(req => {

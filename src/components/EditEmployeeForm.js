@@ -20,14 +20,11 @@ const EditEmployeeForm = (employee) => {
     is_active: "", 
   }
   
-  console.log(initialFormData)
   const [formData, setFormData] = useState(initialFormData)
   
   console.log(formData)
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("you pressed submit")
-    console.log(formData) // code gets the user and password when button is clicked
     
     editEmployee(formData, employee.id)
     
