@@ -18,6 +18,8 @@ https://wonderful-meerkat-7d4755.netlify.app
 ### Rails Backend (Heroku)
 https://als-cafe-api.herokuapp.com/
 
+## Trello Link
+https://trello.com/b/WFeHz74q/andy-raj-t3a2-kanban
 
 ## Presentation Slides
 [slides_pdf_file](./docs/presentation.pdf)
